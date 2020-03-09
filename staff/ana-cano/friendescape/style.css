@@ -1,41 +1,59 @@
 body {
-    padding: 10px
+    padding: 10px;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+	padding: 0;
+	list-style: none;
+	text-decoration: none;
+	border: none;
+    outline: none;
+    background-color: #B5B5B5 
 }
 
 .landing {
     display: block;
-    border: 1px solid black;
-    border-radius: 1rem;
     padding: 0.5rem;
     font-family: 'Princess Sofia', cursive;
     color:black;
-    font-size: 2rem;
     background-color: #B5B5B5; 
     text-align: center;
 }
 
+.landing__logo{
+    margin: 0 auto;
+    width: auto;
+    height: 352px;
+      }
+
+
 .landing a {
     display: block;
-    margin: 0 auto;
-    font-size: 3rem
+    font-size: 2.2rem
+}
+
+.landing h1 {
+    font-size: 2rem
 }
 
 .login {
     display: block;
-    border: 1px solid black;
-    border-radius: 1rem;
     padding: 0.5rem;
     font-family: 'Princess Sofia', cursive;
     color:black;
-    font-size: 2rem;
-    background-color: #B5B5B5;
     text-align: center;
 }
 
-.login--hide {
-    display: none;
+.login h1 {
+    font-size: 2rem
 }
 
+.login__logo {
+    margin: 0 auto;
+    width: auto;
+    height: 352px;
+      }
+    
 .login input {
     display: block;
     border: 1px solid black;
@@ -62,20 +80,20 @@ body {
 
 .register {
     display: block;
-    border: 1px solid black;
-    border-radius: 1rem;
     padding: 0.5rem;
     font-family: 'Princess Sofia', cursive;
     color:black;
-    font-size: 2rem;
-    background-color: #B5B5B5;
     text-align: center;
 }
-
+/* 
 .register--hide {
     display: none;
+} */
+.register__logo{
+    margin: 0 auto;
+    width: auto;
+    height: 352px;
 }
-
 .register input {
     display: block;
     border: 1px solid black;
@@ -89,11 +107,10 @@ body {
     border: 1px solid black;
     border-radius: 1rem;
     padding: 0.5rem;
-    margin: 0.5rem;
+    margin: 0 auto
 }
 
 .register a {
-    display: block;
     padding: 0.5rem;
     margin: 0.5rem;
 }
@@ -112,9 +129,6 @@ body {
 }
 
 .main {
-   
-    border: 1px solid black;
-    border-radius: 1rem;
     padding: 0.5rem;
     width: 100%;
     background-color:#B5B5B5
@@ -129,15 +143,16 @@ body {
 }
 
 .main__logo {
-    max-width: 100%;
     display: block;
-    height: 218px
+    height: 117px;
+    margin-left: 0.5rem;
+    margin-top: 0.5rem
 }
 .main__header {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
-    background-color: #4C59A5;
+    background-color: rgb(102, 13, 161);
 }
 .main__username {
     justify-content: right;
@@ -145,14 +160,27 @@ body {
     flex:1;
     align-self: center;
 }
+.main__groups span{
+    font-size: 1rem
+
+}
 
 .main__groups {
     display: flex;
-    flex-direction: row
+    flex-direction: row;
+    margin-top: 1rem;
+    flex-wrap: wrap
+}
+
+.main__groups img{
+    width: 100%;
+    height: auto;
+    margin-top: 1rem
 }
 .main__groups button{
-    height: 60px;
-    width: auto;
+    height: 69px;
+    width: 69px;
+    margin: 0 auto;
     
 }
 
@@ -194,9 +222,16 @@ body {
     align-self: center;
     font-family: 'Princess Sofia', cursive;
     color:black;
-    font-size: 2rem
+    font-size: 2rem;
+}
+.escapesroom{
+    width: 100%
 }
 
+.escapesroom img{
+    width: 100%; 
+    height: auto
+}
 .escapesroom__item {
     display: flex
 }
