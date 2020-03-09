@@ -1,0 +1,213 @@
+body {
+    padding: 10px
+}
+
+.landing {
+    display: block;
+    border: 1px solid black;
+    border-radius: 1rem;
+    padding: 0.5rem;
+    font-family: 'Princess Sofia', cursive;
+    color:black;
+    font-size: 2rem;
+    background-color: #B5B5B5; 
+    text-align: center;
+}
+
+.landing a {
+    display: block;
+    margin: 0 auto;
+    font-size: 3rem
+}
+
+.login {
+    display: block;
+    border: 1px solid black;
+    border-radius: 1rem;
+    padding: 0.5rem;
+    font-family: 'Princess Sofia', cursive;
+    color:black;
+    font-size: 2rem;
+    background-color: #B5B5B5;
+    text-align: center;
+}
+
+.login--hide {
+    display: none;
+}
+
+.login input {
+    display: block;
+    border: 1px solid black;
+    border-radius: 1rem;
+    padding: 0.5rem;
+    margin: 0 auto
+}
+
+.login button {
+    display: block;
+    border: 1px solid black;
+    border-radius: 1rem;
+    padding: 0.5rem;
+    margin: 0 auto
+    
+}
+
+.login a {
+    display: block;
+    padding: 0.5rem;
+    margin: 0.5rem;
+}
+
+
+.register {
+    display: block;
+    border: 1px solid black;
+    border-radius: 1rem;
+    padding: 0.5rem;
+    font-family: 'Princess Sofia', cursive;
+    color:black;
+    font-size: 2rem;
+    background-color: #B5B5B5;
+    text-align: center;
+}
+
+.register--hide {
+    display: none;
+}
+
+.register input {
+    display: block;
+    border: 1px solid black;
+    border-radius: 1rem;
+    padding: 0.5rem;
+    margin: 0 auto
+}
+
+.register button {
+    display: block;
+    border: 1px solid black;
+    border-radius: 1rem;
+    padding: 0.5rem;
+    margin: 0.5rem;
+}
+
+.register a {
+    display: block;
+    padding: 0.5rem;
+    margin: 0.5rem;
+}
+
+.feedback {
+    color: green;
+    text-align: center;
+}
+
+.feedback--error {
+    color: red;
+}
+
+.feedback--warning {
+    color: orange;
+}
+
+.main {
+   
+    border: 1px solid black;
+    border-radius: 1rem;
+    padding: 0.5rem;
+    width: 100%;
+    background-color:#B5B5B5
+   
+}
+
+.main__nav {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.main__logo {
+    max-width: 100%;
+    display: block;
+    height: 218px
+}
+.main__header {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    background-color: #4C59A5;
+}
+.main__username {
+    justify-content: right;
+    text-align: end;
+    flex:1;
+    align-self: center;
+}
+
+.main__groups {
+    display: flex;
+    flex-direction: row
+}
+.main__groups button{
+    height: 60px;
+    width: auto;
+    
+}
+
+.search--hide {
+    display: none;
+}
+
+.search input {
+    display: block;
+    border: 1px solid black;
+    border-radius: 1rem;
+    padding: 0.5rem;
+    margin: 0.5rem;
+
+}
+
+.search button {
+    display: block;
+    border: 1px solid black;
+    border-radius: 1rem;
+    padding: 0.5rem;
+    margin: 0.5rem;
+    
+}
+
+.groups {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-self: center
+    
+
+}
+.groups button {
+    padding:0.5rem;
+    width: 191px;
+    height: 116px;
+    align-self: center;
+    font-family: 'Princess Sofia', cursive;
+    color:black;
+    font-size: 2rem
+}
+
+.escapesroom__item {
+    display: flex
+}
+
+footer {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    background-color: #B388EB
+}
+
+
+
+/*# sourceMappingURL=style.css.map */
