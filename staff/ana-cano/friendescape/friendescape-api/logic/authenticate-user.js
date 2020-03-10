@@ -28,7 +28,6 @@ module.exports = (email, password) => {
                 .then(validPassword => {
                     if (!validPassword) throw new NotAllowedError(`wrong credentials`)
 
-                    user.authenticated = new Date
 
                     return user.save()
                 })
