@@ -1,7 +1,7 @@
 const { Schema, Types: { ObjectId } } = require('mongoose')
 
 module.exports = new Schema({
-    rol: { type: String, required: true, default: userProf},
+    rol: { type: String, required: true, default: 'user'},
     name: {type: String, required: true },
     surname: {type: String, required: true},
     email: {type: String},

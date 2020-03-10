@@ -1,6 +1,6 @@
 require('dotenv').config()
 
-const { mongoose, models: { User, Event, CreditCard } } = require('events-data')
+const { mongoose, models: { User, Event, CreditCard } } = require('friendescape-data')
 const { env: { TEST_MONGODB_URL } } = process
 const { random } = Math
 

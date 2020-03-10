@@ -7,10 +7,10 @@ module.exports = new Schema({
     date: { type: Date, required: true },
     time: { type: String, required: true},
     minplayers: { type: Number, required: true, ref: 'roomEscape'},
-    img: { type: String, required: true, ref: 'roomEscape'},
     maxplayers: { type: Number, required: true, ref: 'roomEscape' },
-    publisher: { type: ObjectId, required: true, ref: 'User' },
+    img: { type: String, required: true, ref: 'roomEscape'},
+    publisher: { type: ObjectId, required: true, ref: 'user' },
     created: { type: Date, required: true, default: Date.now },
-    subscribed: [{ type: ObjectId, ref: 'User' }],
+    subscribed: [{ type: ObjectId, ref: 'user' }],
     state: [{ type: String, required: true}]
 })

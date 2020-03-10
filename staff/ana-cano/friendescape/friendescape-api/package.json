@@ -6,8 +6,8 @@
   "scripts": {
     "start": "node .",
     "watch": "nodemon .",
-    "test": "npx mocha logic utils",
-    "test-debug": "npx mocha debug logic utils"
+    "test": "npx mocha logic/**/*.spec.js",
+    "test-debug": "npx mocha inspect logic/*/*.spec.js"
   },
   "keywords": [],
   "author": "",
@@ -16,10 +16,10 @@
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "dotenv": "^8.2.0",
-    "events-data": "file:../../events-data",
-    "events-errors": "file:../../events-errors",
-    "events-utils": "file:../../events-utils",
     "express": "^4.17.1",
+    "friendescape-data": "file:../friendescape-data",
+    "friendescape-errors": "file:../friendescape-errors",
+    "friendescape-utils": "file:../friendescape-utils",
     "jsonwebtoken": "^8.5.1",
     "morgan": "^1.9.1",
     "uuid": "^7.0.1",

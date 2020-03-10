@@ -2,7 +2,7 @@ require('dotenv').config()
 
 const { expect } = require('chai')
 const { random } = Math
-const { mongoose, models: { User } } = require('events-data')
+const { mongoose, models: { User } } = require('friendescape-data')
 const registerUser = require('./register-user')
 const bcrypt = require('bcryptjs')
 

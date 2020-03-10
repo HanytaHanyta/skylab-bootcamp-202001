@@ -6,6 +6,8 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
+    "friendescape-errors": "file:../friendescape-errors",
+    "friendescape-utils": "file:../friendescape-utils",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "react-scripts": "3.4.0"
@@ -34,7 +36,7 @@
   },
   "devDependencies": {
     "bcryptjs": "^2.4.3",
-    "events-data": "file:../../events-data",
+    "friendescape-data": "file:../../friendescape-data",
     "node-sass": "^4.13.1"
   },
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",

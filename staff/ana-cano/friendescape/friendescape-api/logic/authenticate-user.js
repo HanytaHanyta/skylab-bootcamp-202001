@@ -1,6 +1,6 @@
-const { validate } = require('events-utils')
-const { models: { User } } = require('events-data')
-const { NotAllowedError } = require('events-errors')
+const { validate } = require('friendescape-utils')
+const { models: { User } } = require('friendescape-data')
+const { NotAllowedError } = require('friendescape-errors')
 const bcrypt = require('bcryptjs')
 
 /**

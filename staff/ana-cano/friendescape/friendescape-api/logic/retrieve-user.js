@@ -1,6 +1,6 @@
-const { validate } = require('events-utils')
-const { models: { User } } = require('events-data')
-const { NotFoundError, NotAllowedError } = require('events-errors')
+const { validate } = require('friendescape-utils')
+const { models: { User } } = require('friendescape-data')
+const { NotFoundError, NotAllowedError } = require('friendescape-errors')
 
 module.exports = id => {
     validate.string(id, 'id')
