@@ -4,13 +4,26 @@ const { env: { PORT = 8080, NODE_ENV: env, MONGODB_URL }, argv: [, , port = PORT
 
 const express = require('express')
 const winston = require('winston')
+const {
+    registerUser,
+    authenticateUser,
+    retrieveUser,
+    listEscapeRooms,
+    themeEscapeRooms,
+    locationEscapeRooms,
+    createGroup,
+    difficultyEscapeRooms,
+    minGamersEscapeRooms,
+    maxGamersEscapeRooms
+} = require('./routes')
+
 const { name, version } = require('./package')
+const bodyParser = require('body-parser')
 const morgan = require('morgan')
 const fs = require('fs')
 const path = require('path')
-const { cors } = require('./mid-wares')
+const { jwtVerifierMidWare, cors } = require('./mid-wares')
 const { mongoose } = require('friendescape-data')
-const router = require('./routes')
 
 mongoose.connect(MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
@@ -28,6 +41,8 @@ mongoose.connect(MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true 
             }))
         }
 
+        const jsonBodyParser = bodyParser.json()
+
         const accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), { flags: 'a' })
 
         const app = express()
@@ -36,7 +51,28 @@ mongoose.connect(MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true 
 
         app.use(morgan('combined', { stream: accessLogStream }))
 
-        app.use('/api', router)
+        app.post('/users', jsonBodyParser, registerUser)
+
+        app.post('/users/auth', jsonBodyParser, authenticateUser)
+
+        app.get('/users', jwtVerifierMidWare, retrieveUser)
+
+        app.get('/escaperooms', listEscapeRooms)
+        
+        app.get('/escaperooms/theme/:query', themeEscapeRooms)
+
+        app.get('/escaperooms/mingamers/:query', minGamersEscapeRooms)
+
+        app.get('/escaperooms/maxgamers/:query', maxGamersEscapeRooms)
+
+        app.post('/create-group', authenticateUser)
+
+        app.get('/escaperooms/location/:query', locationEscapeRooms)
+
+        app.get('/escaperooms/difficulty/:query', difficultyEscapeRooms)
+
+        app.post('/groups/escaperooms/:id', jsonBodyParser, jwtVerifierMidWare,  createGroup)
+
 
         app.listen(port, () => logger.info(`server ${name} ${version} up and running on port ${port}`))
 

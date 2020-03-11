@@ -1,28 +1,13 @@
-const { Router } = require('express')
-const {
-    registerUser, authenticateUser
-   
-   
-} = require('./handlers')
-const { jwtVerifierMidWare } = require('../mid-wares')
-const bodyParser = require('body-parser')
-
-const jsonBodyParser = bodyParser.json()
-
-const router = new Router()
-
-router.post('/users', jsonBodyParser, registerUser)
-
-router.post('/users/auth', jsonBodyParser, authenticateUser)
-
-// router.get('/users', jwtVerifierMidWare, retrieveUser)
-
-// router.post('/users/:id/events', [jwtVerifierMidWare, jsonBodyParser], publishEvent)
-
-// router.get('/events', jwtVerifierMidWare, retrieveLastEvents)
-
-// router.get('/users/:id/events/published', jwtVerifierMidWare, retrievePublishedEvents)
-
-// router.post('/users/:id/events/:eventId', jwtVerifierMidWare, subscribeEvent)
-
-module.exports = router
+module.exports = {
+    registerUser: require('./register-user'),
+    authenticateUser: require('./authenticate-user'),
+    retrieveUser: require('./retrieve-user'),
+    listEscapeRooms: require('./list-escaperooms'),
+    themeEscapeRooms: require('./theme-escaperooms'),
+    createGroup: require('./create-group'),
+    locationEscapeRooms: require('./location-escaperooms'),
+    createGroup: require('./create-group'),
+    difficultyEscapeRooms: require('./difficulty-escaperooms'),
+    minGamersEscapeRooms: require('./mingamers-escaperooms'),
+    maxGamersEscapeRooms: require('./maxgamers-escaperooms')
+}

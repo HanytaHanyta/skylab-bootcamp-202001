@@ -1,17 +1,14 @@
-const { registerUser } = require('../../logic')
-const { NotAllowedError, ContentError } = require('friendescape-errors')
+const { createGroup } = require('../logic')
+const { ContentError } = require('friendescape-errors')
 
-module.exports = (req, res) => {
-    const { body: { name, surname, email, password } } = req
+module.exports = ({payload, params, body}, res) => {
 
+        console.log(payload)
     try {
-        registerUser(name, surname, email, password)
+        createGroup(params.id, payload.sub, body)
             .then(() => res.status(201).end())
             .catch(error => {
                 let status = 400
-
-                if (error instanceof NotAllowedError)
-                    status = 409 // conflict
 
                 const { message } = error
 

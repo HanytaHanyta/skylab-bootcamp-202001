@@ -1,12 +1,11 @@
-const { registerUser } = require('../logic')
+const {listEscapeRooms} = require ('../logic')
 const { NotAllowedError, ContentError } = require('friendescape-errors')
 
 module.exports = (req, res) => {
-    // const { body: { name, surname, email, telf, password } } = req
 
     try {
-        registerUser(req.body)
-            .then(() => res.status(201).end())
+        listEscapeRooms()
+            .then(escapeRooms => res.json(escapeRooms))
             .catch(error => {
                 let status = 400
 

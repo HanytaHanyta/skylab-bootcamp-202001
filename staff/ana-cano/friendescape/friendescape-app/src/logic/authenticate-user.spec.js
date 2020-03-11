@@ -1,5 +1,5 @@
 const { random } = Math
-const { mongoose, models: { User } } = require('friendescape-data')
+const { mongoose, models: { User } } = require('events-data')
 const { authenticateUser } = require('.')
 const bcrypt = require('bcryptjs')
 
