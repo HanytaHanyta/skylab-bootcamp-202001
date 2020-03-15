@@ -45,7 +45,6 @@ function App() {
       try {
         const token = sessionStorage.getItem('token')
         const response = await createEvent(token, 'Event from event-app', 'Event-app description', 'Event-app', new Date())
-        console.log('create event', response)
       } catch ({ message }) {
         setError(message)
       }
@@ -58,9 +57,7 @@ function App() {
       try {
         const token = sessionStorage.getItem('token')
         const events = await retrievePublishedEvents(token)
-        console.log(events)
       } catch ({message}) {
-        console.log(message)
       }
     })()
   }

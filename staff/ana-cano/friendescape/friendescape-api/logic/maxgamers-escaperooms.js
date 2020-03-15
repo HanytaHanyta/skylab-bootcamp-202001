@@ -5,7 +5,7 @@ const { NotFoundError } = require('friendescape-errors')
 module.exports = async query => {
 
     validate.string(query, 'query')
-    debugger
-    const escapeRooms = await Escaperoom.find({"maxplayers": { "$max":query}})
+
+    const escapeRooms = await Escaperoom.find({"maxplayers": { $gte : query}})
     return escapeRooms
 }

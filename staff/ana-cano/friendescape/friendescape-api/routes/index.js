@@ -9,5 +9,12 @@ module.exports = {
     createGroup: require('./create-group'),
     difficultyEscapeRooms: require('./difficulty-escaperooms'),
     minGamersEscapeRooms: require('./mingamers-escaperooms'),
-    maxGamersEscapeRooms: require('./maxgamers-escaperooms')
+    maxGamersEscapeRooms: require('./maxgamers-escaperooms'),
+    searchEscapeRooms: require('./search-escaperooms'),
+    deleteGroup: require('./delete-group'),
+    deactivateUser: require('./deactivate-user'),
+    retrieveEscapeRoom: require('./retrieve-escaperoom'),
+    groupsUser: require('./groups-user'),
+    joingGroup: require('./join-group'),
+    retrieveNextGroups: require('./retrieve-next-groups')
 }

@@ -1,15 +1,17 @@
-const { createGroup } = require('../logic')
-const { ContentError } = require('friendescape-errors')
+const { retrieveEscapeRoom } = require('../logic')
+const { NotAllowedError, ContentError } = require('friendescape-errors')
 
-module.exports = ({payload, params, body}, res) => {
-
-      
+module.exports = (req, res) => {
+    const {params:{id}} = req
     try {
-        createGroup(escaperoomid, userid, title,location, date, time,
-            minplayers, maxplayers, state)
-            .then(() => res.status(201).end())
+       
+        retrieveEscapeRoom(id)
+            .then(escape => res.status(200).json(escape))
             .catch(error => {
                 let status = 400
+
+                if (error instanceof NotAllowedError)
+                    status = 409 // conflict
 
                 const { message } = error
 

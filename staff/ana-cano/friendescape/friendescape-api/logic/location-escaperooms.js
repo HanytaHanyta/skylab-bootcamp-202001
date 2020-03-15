@@ -5,6 +5,6 @@ const { NotFoundError } = require('friendescape-errors')
 module.exports = async query => {
 
     validate.string(query, 'query')
-    const escapeRooms = await Escaperoom.find({"location": { "$regex":query}})
-    return escapeRooms
+    const escapeRooms = await Escaperoom.find({"location": { "$regex":query, "$options":"i"}})
+    return await escapeRooms
 }

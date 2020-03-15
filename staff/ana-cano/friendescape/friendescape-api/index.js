@@ -14,7 +14,14 @@ const {
     createGroup,
     difficultyEscapeRooms,
     minGamersEscapeRooms,
-    maxGamersEscapeRooms
+    maxGamersEscapeRooms,
+    searchEscapeRooms,
+    deleteGroup,
+    deactivateUser,
+    retrieveEscapeRoom,
+    groupsUser,
+    joinGroup,
+    retrieveNextGroups
 } = require('./routes')
 
 const { name, version } = require('./package')
@@ -61,6 +68,8 @@ mongoose.connect(MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true 
         
         app.get('/escaperooms/theme/:query', themeEscapeRooms)
 
+        app.get('/escaperooms/search/:query', searchEscapeRooms)
+        
         app.get('/escaperooms/mingamers/:query', minGamersEscapeRooms)
 
         app.get('/escaperooms/maxgamers/:query', maxGamersEscapeRooms)
@@ -73,6 +82,17 @@ mongoose.connect(MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true 
 
         app.post('/groups/escaperooms/:id', jsonBodyParser, jwtVerifierMidWare,  createGroup)
 
+        app.delete('/groups/delete/:id', deleteGroup)
+
+        app.get('/escaperoom/:id', retrieveEscapeRoom)
+
+        app.patch('/deactivate/:id', deactivateUser)
+
+        app.get('/groups-user', jwtVerifierMidWare, groupsUser)
+
+        //app.post('/join-group/:id', jsonBodyParser, joinGroup)
+
+        app.get('/groups/last', retrieveNextGroups)
 
         app.listen(port, () => logger.info(`server ${name} ${version} up and running on port ${port}`))
 

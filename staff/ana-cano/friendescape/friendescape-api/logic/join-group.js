@@ -1,14 +1,31 @@
-// const { validate } = require('./friendescape-utils')
-// const{ models: { Escaperoom, User}} =require('friendescape-data')
+const { models: { Group, User } } = require('friendescape-data')
+const { validate } = require('friendescape-utils')
+const { NotFoundError } = require('friendescape-errors')
 
-// module.exports = async (escaperoomid, userid) => {
+module.exports = async (id, userId) => {
 
-//     validate.string(escaperoomid, 'escaperoomid')
-//     validate.string(userid,'userid')
+    validate.string(id, 'id')
+    validate.string(userId, 'userId')
 
-//     const escape = await Escaperoom.findById(escaperoomid)
+    const joing = await Group.findById(id)
 
-//     if(!escape) throw new NotFoundError(`escape room with id ${id} not found`)
+    if (!joing) throw new NotFoundError(`group with id ${id} not found`)
 
-//     await 
-// }
+    if(User.pubevents )
+
+
+
+    
+
+        
+    return Group.findById(id)
+        .then(group => {
+
+            if (!group) throw new NotFoundError(`group with ${id} doesn't exist`)
+
+            const groupuser = Group.findById(id)
+
+            groupuser.push({"pubevents": id})
+            return groupuser.save()
+        })
+    }
