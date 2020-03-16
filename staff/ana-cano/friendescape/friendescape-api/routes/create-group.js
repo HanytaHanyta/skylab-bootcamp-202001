@@ -1,12 +1,10 @@
 const { createGroup } = require('../logic')
 const { ContentError } = require('friendescape-errors')
 
-module.exports = ({payload, params, body}, res) => {
-
-      
+module.exports = (req, res) => {
+    const {params: {id : escaperoomId}, payload: { sub: userId }, body: {date, time, state}} = req
     try {
-        createGroup(escaperoomid, userid, title,location, date, time,
-            minplayers, maxplayers, state)
+        createGroup(escaperoomId, userId, date, time, state)
             .then(() => res.status(201).end())
             .catch(error => {
                 let status = 400

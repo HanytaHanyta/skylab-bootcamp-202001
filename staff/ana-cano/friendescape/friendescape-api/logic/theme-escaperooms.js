@@ -5,8 +5,11 @@ const { NotFoundError } = require('friendescape-errors')
 module.exports = async query => {
 
     validate.string(query, 'query')
+
+    return (async()=>{
     const escapeRooms = await Escaperoom.find({theme: query})
     return escapeRooms
+})()
 }
 
     // // return (async ()=> {

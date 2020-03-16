@@ -7,16 +7,16 @@ const { random } = Math
 const authenticateUser = require('./authenticate-user')
 const bcrypt = require('bcryptjs')
 
-describe('authenticateUser', () => {
+describe('deactivateUser', () => {
     before(() =>
         mongoose.connect(TEST_MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true })
             .then(() => User.deleteMany())
     )
 
-    let name, surname, email, password
+    let userId
 
     beforeEach(() => {
-        name = `name-${random()}`
+        userId = `userId-${random()}`
         surname = `surname-${random()}`
         email = `email-${random()}@mail.com`
         password = `password-${random()}`

@@ -6,7 +6,7 @@ module.exports = new Schema({
     email: {type: String},
     telf: {type: String },
     password: {type: String}, 
-    pubevents: {type: String},
+    pubevents: [{type: String}],
     foults: {type: Number},
     trusty: {type: Number},
     deactivated: {type: String, default:0},   

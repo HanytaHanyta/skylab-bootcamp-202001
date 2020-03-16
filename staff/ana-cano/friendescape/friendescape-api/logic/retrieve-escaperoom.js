@@ -1,5 +1,4 @@
 const { validate } = require('friendescape-utils')
-
 const { models: { Escaperoom } } = require('friendescape-data')
 const { NotFoundError, NotAllowedError } = require('friendescape-errors')
 

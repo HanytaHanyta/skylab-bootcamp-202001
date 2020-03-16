@@ -2,10 +2,13 @@ const { models: { Escaperoom } } = require('friendescape-data')
 const { validate } = require('friendescape-utils')
 const { NotFoundError } = require('friendescape-errors')
 
-module.exports = async query => {
+module.exports = query => {
 
     validate.string(query, 'query')
 
+    return (async ()=>{
+
     const escapeRooms = await Escaperoom.find({"maxplayers": { $gte : query}})
     return escapeRooms
+})()
 }

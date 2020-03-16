@@ -2,7 +2,9 @@ const { validate } = require('friendescape-utils')
 const { models: { User} } = require('friendescape-data')
 const { NotFoundError } = require('friendescape-errors')
 
-module.exports = async (userId) => {
+module.exports =(userId) => {
+
+    return (async()=>{ 
  
     validate.string(userId, 'userId')
 
@@ -13,6 +15,7 @@ module.exports = async (userId) => {
     user.deactivated = 1
     
     await user.save()
+})()
     
 
 }

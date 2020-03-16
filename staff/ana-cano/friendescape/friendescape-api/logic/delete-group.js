@@ -2,9 +2,11 @@ const { validate } = require('friendescape-utils')
 const { models: { Group} } = require('friendescape-data')
 const { NotFoundError } = require('friendescape-errors')
 
-module.exports = async (groupId) => {
+module.exports =(groupId) => {
 
     validate.string(groupId, 'groupId')
+
+    return (async ()=>{
 
     const deletegroup = await Group.findById(groupId)
     
@@ -13,5 +15,6 @@ module.exports = async (groupId) => {
     const deleted = await Group.deleteOne({_id: groupId})
 
     return deleted
+    })()
 
 }

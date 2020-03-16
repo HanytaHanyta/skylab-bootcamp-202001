@@ -1,26 +1,28 @@
 const { validate } = require('friendescape-utils')
-const { models: { Group, User} } = require('friendescape-data')
+const { models: { Group, User}, } = require('friendescape-data')
 const { NotFoundError } = require('friendescape-errors')
 
-module.exports = async (escaperoomid, userid, title,location, date, time,
-    minplayers, maxplayers, state ) => {
-    validate.string(escaperoomid, 'escaperoomid')
-    validate.string(userid, 'userid')
-    validate.string(title, 'title')
-    validate.string(date, 'date')
-    validate.string(time, 'time')
-
-    const newGroup = new Group(title,location, date, time,
-        minplayers, maxplayers, state)
+module.exports = (escaperoomId, userId, date, time, state ) => {
+    // validate.string(escaperoomId, 'escaperoomId')
+    // validate.string(userId, 'userId')
+    // validate.string(date, 'date')
+    // validate.string(time, 'time')
+    // validate.string(state, 'state')
     
-    const savedGroup = await newGroup.save()
-    const updatGroup = await newGroup.update({_id:savedGroup._id},
-        {$push:{subevents: userid}},
-        {$push:{escapeRoom: escaperoomid}})
+    return ( async() =>{ 
 
-    const updatedUser = await User.update({_id:userid},
-        {$push:{pubevents: savedGroup._id}})
+    const newGroup = new Group({date, time, state, escapeRoom: escaperoomId} )
+    
+    newGroup.subevents.push(userId)
 
-    return
+    const user = await User.findById(userId)
 
+    user.pubevents.push(newGroup._id.toString())
+
+    await user.save()
+        debugger
+    return newGroup.id
+
+})()
 }
+

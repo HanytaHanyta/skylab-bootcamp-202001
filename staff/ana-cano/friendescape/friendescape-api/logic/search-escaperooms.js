@@ -3,7 +3,7 @@ const { validate } = require('friendescape-utils')
 const { NotFoundError } = require('friendescape-errors')
 
 module.exports =  (query) => {
-debugger
+
     validate.string(query, 'query')
 
     return Escaperoom.find({ title: { $regex: query, $options: "i" } } )
@@ -12,7 +12,4 @@ debugger
 
             return scape
         })
-    
-    // const escapeRooms = await Escaperoom.find({ "title": { "$regex": query, "$options": "i"}})
-    //  await escapeRooms
 }
