@@ -1,5 +1,5 @@
-import { validate } from 'events-utils'
-const { NotAllowedError } = require('events-errors')
+import { validate } from 'friendescape-utils'
+const { NotAllowedError } = require('friendescape-errors')
 
 //const { env: { REACT_APP_API_URL: API_URL } } = process
 

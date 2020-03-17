@@ -1,24 +1,33 @@
-import React, { useEffect, useContext } from 'react'
+// import React, { useEffect, useContext } from 'react'
+import React, { useContext } from 'react'
 import './App.sass'
 import Page from './Page'
 import Register from './Register'
-import Login from './Login'
-import Home from './Home'
-import { registerUser, authenticateUser, retrieveUser } from '../logic'
+// import Login from './Login'
+// import Home from './Home'
+import { registerUser} from '../logic'
 import { Context } from './ContextProvider'
+// import { Route, withRouter, Redirect } from 'react-router-dom'
+import { Route, withRouter} from 'react-router-dom'
 
-function App() {
+export default withRouter(function ({ history }) {
   const [state, setState] = useContext(Context)
 
-  useEffect(() => {
-    const { token } = sessionStorage
+  // useEffect(() => {
+  //   if (isLoggedIn()) {
+  //     setState({ page: 'home' })
 
-    token ? setState({ token, page: 'home' }) : setState({ page: 'login' })
-  }, [])
+  //     history.push('/home')
+  //   } else {
+  //     setState({ page: 'login' })
 
-  async function handleRegister(name, surname, email, password) {
+  //     history.push('/login')
+  //   }
+  // }, [])
+
+  async function handleRegister(name, surname, email, telf, password) {
     try {
-      await registerUser(name, surname, email, password)
+      await registerUser(name, surname, email, telf, password)
 
       setState({ page: 'login' })
     } catch ({ message }) {
@@ -26,27 +35,44 @@ function App() {
     }
   }
 
-  async function handleLogin(email, password) {
-    try {
-      const token = await authenticateUser(email, password)
+  // async function handleLogin(email, password) {
+  //   try {
+  //     await login(email, password)
 
-      sessionStorage.token = token
+  //     history.push('/home')
+  //   } catch ({ message }) {
+  //     setState({ ...state, error: message })
+  //   }
+  // }
 
-      setState({ token, page: 'home' })
-    } catch ({ message }) {
-      setState({ ...state, error: message })
-    }
+  function handleGoToLogin() {
+    history.push('/login')
+  }
+
+  // function handleGoToRegister() {
+  //   history.push('/register')
+  // }
+
+  // function handleMountLogin() {
+  //   setState({ page: 'login' })
+  // }
+
+  function handleMountRegister() {
+    setState({ page: 'register' })
   }
 
   const { page, error } = state
 
   return <div className="app">
     <Page name={page}>
-      {page === 'register' && <Register onSubmit={handleRegister} error={error} />}
-      {page === 'login' && <Login onSubmit={handleLogin} error={error} />}
-      {page === 'home' && <Home />}
+      {/* <Route exact path="/" render={() => isLoggedIn() ? <Redirect to="/home" /> : <Redirect to="/login" />} /> */}
+      {/* <Route path="/" render={() => <h1>Hello, All</h1>} /> */}
+      {/* <Route path="/login" render={() => <h1>Hello, Login</h1>} /> */}
+      {/* <Route path="/home/:id" render={props => <h1>{props.match.params.id}</h1>} /> */}
+      {/* <Route path="/register" render={() => isLoggedIn() ? <Redirect to="/home" /> : <Register onSubmit={handleRegister} error={error} onGoToLogin={handleGoToLogin} onMount={handleMountRegister} />} /> */}
+      <Route path="/register" render={() => <Register onSubmit={handleRegister} error={error} onGoToLogin={handleGoToLogin} onMount={handleMountRegister} />} />
+      {/* <Route path="/login" render={() => isLoggedIn() ? <Redirect to="/home" /> : <Login onSubmit={handleLogin} error={error} onGoToRegister={handleGoToRegister} onMount={handleMountLogin} />} />
+      <Route path="/home" render={() => isLoggedIn() ? <Home /> : <Redirect to="/login" />} /> */}
     </Page>
   </div>
-}
-
-export default App
+})

@@ -36,7 +36,7 @@
   },
   "devDependencies": {
     "bcryptjs": "^2.4.3",
-    "friendescape-data": "file:../../friendescape-data",
+    "friendescape-data": "file:../friendescape-data",
     "node-sass": "^4.13.1"
   },
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",

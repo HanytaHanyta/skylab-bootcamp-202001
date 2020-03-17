@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import App from './components/App';
 import * as serviceWorker from './serviceWorker';
 
-import './index.sass'
+// import './index.sass'
 import { Provider } from './components/ContextProvider'
 
 ReactDOM.render(<Provider><App /></Provider>, document.getElementById('root'));
