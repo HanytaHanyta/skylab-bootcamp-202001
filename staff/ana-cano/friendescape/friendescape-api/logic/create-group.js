@@ -19,9 +19,12 @@ module.exports = (escaperoomId, userId, date, time, state ) => {
 
     user.pubevents.push(newGroup._id.toString())
 
+    newGroup.id = newGroup._id.toString()
+
     await user.save()
-        debugger
-    return newGroup.id
+    await newGroup.save()
+    
+    return newGroup
 
 })()
 }
