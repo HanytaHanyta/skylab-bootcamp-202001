@@ -22,7 +22,7 @@ describe('createGroup', () => {
         // userId = `userId-${random()}`
         date = new Date
         time = `time-${random()}`
-        state = `state-${random()}`
+        state = 'active'
 
         name = `name-${random()}`
         surname = `surname-${random()}`
@@ -57,19 +57,33 @@ describe('createGroup', () => {
             
             _escaperoomId = escapeRoom.id
 
-            const user = await User.create({name, surname, email, telf, password, pubevents, foults, trusty, deactivated: 0 })
+            const user = await User.create({name, surname, email, telf, password })
 
             _id = user.id
         
         })
 
-        it('should succeed on valid group and create it', () =>
-            createGroup(_escaperoomId, _id, date, time, state)
-                .then(groupId => {
-                    expect(groupId).to.exist
+        it('should succeed on valid group and create it', async () => {
+            const group = await createGroup(_escaperoomId, _id, date, time, state)
 
-                })
-        )
+            expect(group.id).to.exist
+  
+            })
+
+        it('should succeed on valid user published event group', async () => {
+            const group = await createGroup(_escaperoomId, _id, date, time, state)
+            const user = await User.findById(_id)
+
+            expect(user.pubevents[0]).to.equal(group.id)
+            
+            })
+
+        it('should succeed on valid user user id in its group', async () => {
+            const group = await createGroup(_escaperoomId, _id, date, time, state)
+
+            expect(group.subevents[0].toString()).to.equal(_id)
+            
+            })
     })
 
     after(() => Promise.all([User.deleteMany(), Escaperoom.deleteMany(), Group.deleteMany() ]).then(() => mongoose.disconnect()))

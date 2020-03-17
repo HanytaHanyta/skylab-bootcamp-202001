@@ -2,10 +2,9 @@ require('dotenv').config()
 
 const { expect } = require('chai')
 const { random } = Math
-const { mongoose, models: { User } } = require('friendescape-data')
+const { mongoose, models: { User } } = require ('friendescape-data')
 const registerUser = require('./register-user')
 const bcrypt = require('bcryptjs')
-const { validate } = require('friendescape-utils')
 
 const { env: { TEST_MONGODB_URL } } = process
 
@@ -29,7 +28,7 @@ describe('registerUser', () => {
     
         
     })
-    it('should succeed on correct user data', () =>
+    it('should succeed on correct user data', () =>{
         registerUser(name, surname, email, telf, password)
             .then(result => {
                 expect(result).not.to.exist
@@ -49,7 +48,8 @@ describe('registerUser', () => {
                 return bcrypt.compare(password, user.password)
             })
             .then(validPassword => expect(validPassword).to.be.true)
+        }
     )
 
-    
+    after(() => Promise.all([User.deleteMany()]).then(() => mongoose.disconnect())) 
 })
