@@ -1,10 +1,10 @@
 require('dotenv').config()
 
 const { env: { TEST_MONGODB_URL } } = process
-const { mongoose, models: { User } } = require ('friendescape-data')
+const { mongoose, models: { User } } = require('friendescape-data')
 const { expect } = require('chai')
 const { random } = Math
-const authenticateUser = require('./authenticate-user')
+const deactivateUser = require('./deactivate-user')
 const bcrypt = require('bcryptjs')
 
 describe('deactivateUser', () => {
@@ -13,36 +13,39 @@ describe('deactivateUser', () => {
             .then(() => User.deleteMany())
     )
 
-    let userId, surname, email, password
+    let name, surname, email, password
 
     beforeEach(() => {
-        userId = `userId-${random()}`
+        name = `name-${random()}`
         surname = `surname-${random()}`
         email = `email-${random()}@mail.com`
         password = `password-${random()}`
-        deactivated = 0 })
+        deactivated = 0
+    })
 
     describe('when user already exists', () => {
-        let _id
+        let userId
 
         beforeEach(() =>
             bcrypt.hash(password, 10)
                 .then(password =>
-                    User.create( name, surname, email, password, deactivated:0 )
-                    
+                    User.create({ name, surname, email, password })
+
                 )
-                .then(user => _id = user.id)
+                .then(user => userId = user.id)
         )
 
-        it('should deactivate the user', () =>
-            authenticateUser(email, password)
-                .then(id => {
-                    expect(id).to.be.a('string')
-                    expect(id.length).to.be.greaterThan(0)
-                    expect(id).to.equal(_id)
-                })
-        )
+        it('should deactivate the user', async () => {
+            const result = await deactivateUser(userId)
+            const user = await User.findById(userId)
+
+            expect(result).to.exist
+            expect(result).to.be.true
+            expect(user).to.exist
+            expect(user.deactivated).to.equal('1')
+
+
+        })
     })
-
     after(() => User.deleteMany().then(() => mongoose.disconnect()))
 })
