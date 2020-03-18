@@ -5,12 +5,12 @@ const { mongoose, models: { User, Group, Escaperoom } } = require('friendescape-
 const { expect } = require('chai')
 const { random } = Math
 const listEscaperooms = require('./list-escaperooms')
-// const bcrypt = require('bcryptjs')
 
-describe.only('listEscaperooms', () => {
+
+describe('listEscaperooms', () => {
     before(() =>
         mongoose.connect(TEST_MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true })
-            .then(() => User.deleteMany())
+            .then(() => Promise.all([User.deleteMany(), Escaperoom.deleteMany()]))
     )
     let name, surname, email, telf, password, pubevents, foults, trusty
     let date, time, state, escaperoomsIDS, titles, descriptions, locations, durations
