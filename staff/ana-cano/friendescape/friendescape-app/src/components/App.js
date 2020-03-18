@@ -14,6 +14,7 @@ export default withRouter(function ({ history }) {
   useEffect(() => {
       setState({ page: 'landing' })
       history.push('/landing')
+
   }, [])
   
   async function handleRegister(name, surname, email, password) {
