@@ -1,12 +1,13 @@
 import App from './App'
 import Page from './Page'
+import Login from './Login'
 import Register from './Register'
-// import Login from './Login'
-// import Home from './Home'
-// import CreateEvent from './CreateEvent'
+import Landing from './Landing'
 
 export {
     App,
+    Page,
+    Login,
     Register,
-    Page
+    Landing
 }

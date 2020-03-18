@@ -1,8 +1,8 @@
+import isLoggedIn from './is-logged-in'
 import registerUser from './register-user'
-// import login from './login'
-// import retrieveUser from './retrieve-user'
-// import logout from './logout'
-
+import login from './login'
 export {
-    registerUser
+    registerUser,
+    login,
+    isLoggedIn
 }
