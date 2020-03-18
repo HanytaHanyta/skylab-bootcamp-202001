@@ -3,7 +3,8 @@ const { models: { User } } = require('friendescape-data')
 const { NotAllowedError } = require('friendescape-errors')
 const bcrypt = require('bcryptjs')
 
-module.exports = ({name, surname, email, telf, password}) => {
+
+module.exports = (name, surname, email, telf, password) => {
     validate.string(name, 'name')
     validate.string(surname, 'surname')
     validate.string(email, 'email')
