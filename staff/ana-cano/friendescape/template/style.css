@@ -1,0 +1,265 @@
+body {
+    padding: 10px;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+	padding: 0;
+	list-style: none;
+	text-decoration: none;
+	border: none;
+    outline: none;
+    background-color: #B5B5B5 
+}
+
+.landing {
+    display: block;
+    padding: 0.5rem;
+    font-family: 'Princess Sofia', cursive;
+    color:black;
+    background-color: #B5B5B5; 
+    text-align: center;
+}
+
+.landing__logo{
+    margin: 0 auto;
+    width: auto;
+    height: 352px;
+      }
+
+
+.landing a {
+    display: block;
+    font-size: 2.2rem
+}
+
+.landing h1 {
+    font-size: 2rem
+}
+
+.login {
+    display: block;
+    padding: 0.5rem;
+    font-family: 'Princess Sofia', cursive;
+    color:black;
+    text-align: center;
+}
+
+.login h1 {
+    font-size: 2rem
+}
+
+.login__logo {
+    margin: 0 auto;
+    width: auto;
+    height: 352px;
+      }
+    
+.login input {
+    display: block;
+    border: 1px solid black;
+    border-radius: 1rem;
+    padding: 0.5rem;
+    margin: 0 auto
+}
+
+.login button {
+    display: block;
+    border: 1px solid black;
+    border-radius: 1rem;
+    padding: 0.5rem;
+    margin: 0 auto
+    
+}
+
+.login a {
+    display: block;
+    padding: 0.5rem;
+    margin: 0.5rem;
+}
+
+
+.register {
+    display: block;
+    padding: 0.5rem;
+    font-family: 'Princess Sofia', cursive;
+    color:black;
+    text-align: center;
+}
+/* 
+.register--hide {
+    display: none;
+} */
+.register__logo{
+    margin: 0 auto;
+    width: auto;
+    height: 352px;
+}
+.register input {
+    display: block;
+    border: 1px solid black;
+    border-radius: 1rem;
+    padding: 0.5rem;
+    margin: 0 auto
+}
+
+.register button {
+    display: block;
+    border: 1px solid black;
+    border-radius: 1rem;
+    padding: 0.5rem;
+    margin: 0 auto
+}
+
+.register a {
+    padding: 0.5rem;
+    margin: 0.5rem;
+}
+
+.feedback {
+    color: green;
+    text-align: center;
+}
+
+.feedback--error {
+    color: red;
+}
+
+.feedback--warning {
+    color: orange;
+}
+
+.main {
+    padding: 0.5rem;
+    width: 100%;
+    background-color:#B5B5B5
+   
+}
+
+.main__nav {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.main__logo {
+    display: block;
+    height: 117px;
+    margin-left: 0.5rem;
+    margin-top: 0.5rem
+}
+.main__header {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    background-color: rgb(102, 13, 161);
+}
+.main__username {
+    justify-content: right;
+    text-align: end;
+    flex:1;
+    align-self: center;
+}
+.main__groups span{
+    font-size: 1rem
+
+}
+
+.main__groups {
+    display: flex;
+    flex-direction: row;
+    margin-top: 1rem;
+    flex-wrap: wrap
+}
+
+.main__groups img{
+    height: auto;
+    margin-top: 1rem
+}
+.main__groups button{
+    height: 69px;
+    width: 69px;
+    margin: 0 auto;
+    
+}
+
+.search--hide {
+    display: none;
+}
+
+.search input {
+    display: block;
+    border: 1px solid black;
+    border-radius: 1rem;
+    padding: 0.5rem;
+    margin: 0.5rem;
+
+}
+
+.search button {
+    display: block;
+    border: 1px solid black;
+    border-radius: 1rem;
+    padding: 0.5rem;
+    margin: 0.5rem;
+    
+}
+
+.groups {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-self: center
+    
+
+}
+.groups button {
+    padding:0.5rem;
+    width: 191px;
+    height: 116px;
+    align-self: center;
+    font-family: 'Princess Sofia', cursive;
+    color:black;
+    font-size: 2rem;
+}
+.escapesroom{
+    display: flex;
+    flex-direction: column
+}
+
+.escapesroom img{
+    width: 50%; 
+    height: auto
+}
+.escapesroom__item {
+    display: flex
+}
+
+footer {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    background-color: #B388EB
+}
+
+.detail img {
+    width: 50%
+}
+.joingroup img{
+    width: 50%
+}
+
+.detailcreategroup img{
+    width: 100%
+}
+
+.joinus__caution {
+    background-color: yellow
+}
+.escapesroom__item img {
+    width: 50%
+}
+
+
+/*# sourceMappingURL=style.css.map */
