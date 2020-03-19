@@ -31,7 +31,7 @@ export default function ({ onGoToRegister, onGoToLogin, error }) {
     </figure>
 
     <a href="" onClick = {handleGoToLogin}>Login</a> 
-    <a href="" onClick = {handleGoToRegister}>Register</a>  
+    <a href="" onClick = {handleGoToRegister}>Register</a> 
 
     </section>
     </>

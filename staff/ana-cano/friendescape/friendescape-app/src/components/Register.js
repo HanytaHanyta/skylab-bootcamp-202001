@@ -41,6 +41,7 @@ export default function ({ onSubmit, onGoToLogin, error, onMount }) {
         <form className="register__form" onSubmit={handleSubmit}>
        
         <div className="register__inputWrapper">
+            <i class="far fa-user-circle"></i>
             <input id="name-input" className="register__input" type="text" name="name" placeholder="Insert your name"/>
             <label for="name-input" className="register__label">Name: </label>
         </div>
