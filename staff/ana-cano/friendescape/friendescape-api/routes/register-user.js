@@ -2,10 +2,10 @@ const { registerUser } = require('../logic')
 const { NotAllowedError, ContentError } = require('friendescape-errors')
 
 module.exports = (req, res) => {
-    // const { body: { name, surname, email, telf, password } } = req
+    const { body: { name, surname, email, telf, password } } = req
 
     try {
-        registerUser(req.body)
+        registerUser(name, surname, email, telf, password)
             .then(() => res.status(201).end())
             .catch(error => {
                 let status = 400

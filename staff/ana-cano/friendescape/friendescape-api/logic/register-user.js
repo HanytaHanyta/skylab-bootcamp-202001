@@ -5,6 +5,7 @@ const bcrypt = require('bcryptjs')
 
 
 module.exports = (name, surname, email, telf, password) => {
+
     validate.string(name, 'name')
     validate.string(surname, 'surname')
     validate.string(email, 'email')

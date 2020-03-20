@@ -43,11 +43,8 @@ const { random } = Math
 
         const __users = await User.find().lean()
 
-        debugger
-
         const ___users = await User.find().populate('published', 'title date').lean()
 
-        debugger
 
         const creditCard = new CreditCard({ number: '1234123412341234', expiration: new Date, cvv: '019' })
 
@@ -56,8 +53,6 @@ const { random } = Math
         await user.save()
 
         const _user = await User.findById(user.id).lean()
-
-        debugger
 
         await mongoose.disconnect()
     })()

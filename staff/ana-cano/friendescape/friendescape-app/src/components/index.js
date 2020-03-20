@@ -4,6 +4,7 @@ import Login from './Login'
 import Register from './Register'
 import Landing from './Landing'
 import Feedback from './Feedback'
+import Header from './Header'
 
 
 export {
@@ -12,5 +13,6 @@ export {
     Login,
     Register,
     Landing,
-    Feedback
+    Feedback,
+    Header
 }
