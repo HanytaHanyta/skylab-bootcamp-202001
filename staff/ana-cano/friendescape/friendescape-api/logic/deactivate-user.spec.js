@@ -1,7 +1,7 @@
 require('dotenv').config()
 
 const { env: { TEST_MONGODB_URL } } = process
-const { mongoose, models: { User } } = require('friendescape-data')
+const { mongoose, models: { User } } = require ('friendescape-data')
 const { expect } = require('chai')
 const { random } = Math
 const authenticateUser = require('./authenticate-user')
@@ -13,14 +13,14 @@ describe('deactivateUser', () => {
             .then(() => User.deleteMany())
     )
 
-    let userId
+    let userId, surname, email, password
 
     beforeEach(() => {
         userId = `userId-${random()}`
         surname = `surname-${random()}`
         email = `email-${random()}@mail.com`
         password = `password-${random()}`
-    })
+        deactivated = 0 })
 
     describe('when user already exists', () => {
         let _id
@@ -28,12 +28,13 @@ describe('deactivateUser', () => {
         beforeEach(() =>
             bcrypt.hash(password, 10)
                 .then(password =>
-                    User.create({ name, surname, email, password })
+                    User.create( name, surname, email, password, deactivated:0 )
+                    
                 )
                 .then(user => _id = user.id)
         )
 
-        it('should succeed on correct and valid and right credentials', () =>
+        it('should deactivate the user', () =>
             authenticateUser(email, password)
                 .then(id => {
                     expect(id).to.be.a('string')
