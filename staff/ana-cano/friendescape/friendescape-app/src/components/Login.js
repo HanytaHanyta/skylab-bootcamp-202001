@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import './login.sass'
 import Logo from './FriendEscape.png'
-import Feedback from './Feedback'
+// import Feedback from './Feedback'
 
 
 

@@ -3,12 +3,8 @@ import './login.sass'
 import Logo from './FriendEscape.png'
 import Feedback from './Feedback'
 
-export default function ({onSubmitJoin, onSumitCreate}) {
-    useEffect(() => {
-        onMount()
-    
-    }, [])
-
+export default function ({}) {
+  
 return <>
 
     <div className="main">

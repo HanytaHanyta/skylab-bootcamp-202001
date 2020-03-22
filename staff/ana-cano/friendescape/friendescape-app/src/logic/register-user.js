@@ -3,7 +3,7 @@ const { NotAllowedError } = require('friendescape-errors')
 //const { env: { REACT_APP_API_URL: API_URL } } = process
 const API_URL = process.env.REACT_APP_API_URL
 export default function (name, surname, email, telf, password) {
-    debugger
+
     validate.string(name, 'name')
     validate.string(surname, 'surname')
     validate.string(email, 'email')

@@ -1,6 +1,6 @@
 import React, { useEffect, useContext, useState} from 'react'
-import { Register, Login, Page, Home, Landing, Header, Feedback } from '../components'
-import { registerUser, retrieveUser, login, isLoggedIn, context } from '../logic'
+import { Register, Login, Page, Landing, Home, Main} from '../components'
+import { registerUser, retrieveUser, login, isLoggedIn,search, escapeList } from '../logic'
 import { Context } from './ContextProvider'
 import { Route, withRouter, Redirect } from 'react-router-dom'
 
@@ -8,6 +8,23 @@ export default withRouter(function ({ history }) {
   const [state, setState] = useContext(Context)
   const { page, error } = state
   const [ user, setUser] = useState([])
+  const [ escapes , setEscapeList] = useState([])
+  const [ query, setQuery] = useState([])
+  
+
+  useEffect(() => {
+    if (isLoggedIn()) {
+      (async() => {
+
+        const user = await retrieveUser()
+        setUser(user)       
+
+      })()
+    } else {
+      history.push('/login')
+    }
+  }, [])
+
 
   useEffect(() => {
       setState({ page: 'landing' })
@@ -32,7 +49,11 @@ export default withRouter(function ({ history }) {
       await login(email, password)
       const user = await retrieveUser()
       setUser(user)
-      history.push('/main')
+
+      const availableEscapes = await escapeList()
+      setEscapeList(availableEscapes)
+      
+      history.push('/home')
       //ojito que lo he cambiado
     } catch ({ message }) {
       setState({ ...state, error: message })
@@ -57,27 +78,62 @@ export default withRouter(function ({ history }) {
     setState({ page: 'register'})
   }
 
-  
+  // async function handleSearch(){
+  //   try{
+    
+  //     await search(query)
+  //     setState({ page: `escaperooms/search/${query}`})
+  //   } catch ({ message }) {
+  //     setState({ error: message })
+  //   }
+  // }
 
+  async function handleSearch(query){
+    try {
+      setEscapeList(await search(query))
+      setState({ page: 'home' })
+    } catch ({ message }) {
+      setState({ error: message })
+    }
+  }
 
+  async function handleJoinGroup(){
+    try{
 
-// function handleMountHeader(){
-//     setState({ page: 'header'})
-//   }
+      setState({ page: 'landing'})
+    } catch ({ message }) {
+      setState({ error: message })
+    }
+  }
 
+    function handleLocations() {
+      history.push('/location')
+      }
+
+  //     setState({ page: 'locations'})
+  //   } catch ({ message }) {
+  //     setState({ error: message })
+  //   }
+  // }
+
+  }
+
+  // async function onGoToJoinGroups({
+  //   setState({ page: 'landing' })
+  // })
 
 
   return <div>
+
     <Page name={page}>
       <Route exact path="/" render={() => <Redirect to="/landing" />} />
       <Route path="/landing" render={() => <Landing onGoToRegister={handleGoToRegister} onGoToLogin={handleGoToLogin} onMount={handleMountLanding} />} /> 
       <Route path="/login" render={() => <Login onSubmit={handleLogin} error={error} onGoToRegister={handleGoToRegister} onMount={handleMountLogin} />} />
       <Route path="/register" render={() => <Register onSubmit={handleRegister} error={error} onGoToLogin={handleGoToLogin} onMount={handleMountRegister} />} />
-      <Route path='/main' render={() => isLoggedIn() ? <><Header user={user}  /><Main /></> : <Redirect to='/login' />} />
-
-      {/* <Route path="/login" render={() => isLoggedIn() ? <Redirect to="/landing" /> : <Login onSubmit={handleLogin} error={error} onGoToRegister={handleGoToRegister} onMount={handleMountLogin} />} /> */}
-
-      
+      <Route path='/home' render={() => <><Home user={user} availableEscape = {escapes} onGoToSearch={handleSearch}  onGoToJoinGroup={handleJoinGroup} onGoToLocations={handleLocations}/></>} />
+      <Route path='/location' render={() => <><Home user={user} availableEscape = {escapes} onGoToSearch={handleSearch}  onGoToJoinGroup={handleJoinGroup} onGoToLocations={handleLocations}/></>} />
+{/* 
+      onSubmit={handleSearch} */}
       
       
       {/* <Route path="/main" render={()=> <Header onMount={handleMountHeader} />} />  */}
