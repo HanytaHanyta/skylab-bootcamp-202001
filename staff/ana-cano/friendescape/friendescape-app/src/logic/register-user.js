@@ -1,7 +1,10 @@
 import { validate } from 'friendescape-utils'
 const { NotAllowedError } = require('friendescape-errors')
+
 //const { env: { REACT_APP_API_URL: API_URL } } = process
 const API_URL = process.env.REACT_APP_API_URL
+
+
 export default function (name, surname, email, telf, password) {
 
     validate.string(name, 'name')

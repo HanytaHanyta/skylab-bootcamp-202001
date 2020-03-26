@@ -1,40 +1,26 @@
-import React, { useEffect, useState } from 'react'
-// import './home.sass'
-import { withRouter } from 'react-router-dom'
-import Logo from './FriendEscape.png'
-import Item from './Item'
+import React, { Component } from 'react'
+import { Map, TileLayer, Marker, Popup } from 'react-leaflet'
 
 
-export default function ({user, onGoToBack}) {
-    const {name} = user
+export default function ({ }) {
+const state = {
+    lat: 51.505,
+    lng: -0.09,
+    zoom: 13,
+  }
 
-
-    function handleGoBack(event) {
-        event.preventDefault()
-
-        onGoToBack()
-    }
-
-    
+    const position = [state.lat, state.lng]
     return <>
-    {/* Header */}
-   <div className="header">
-    <figure>
-        <img className='header__logo' src ={Logo} alt="Logo"/>
-    </figure>
-    <div className='header__username'>
-<p>Welcome {name}</p>
-    <i className="fas fa-sign-out-alt"></i>
-    </div>
-    </div>
-
-{/* Search */}
-<div className={availableEscape ? "escapesroom search" : "escapesroom query"}>
-    <p>Escapes Room</p>
-    <ul>
-        {availableEscape.map(escape => <Item key={escape._id} item={escape} onClick={onItemClick} />)}
-    </ul>
-</div>
-<button onClick={handleGoBack}>Go back</button>
-    </>
+    <Map className="map" center={position} zoom={state.zoom}>
+        <TileLayer
+          attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
+        <Marker position={position}>
+          <Popup>
+            A pretty CSS3 popup. <br /> Easily customizable.
+          </Popup>
+        </Marker>
+      </Map>
+  </>
 }

@@ -1,39 +1,81 @@
-import React from 'react'
-// import './Item.sass'
+import React, { useEffect, useState} from 'react'
+import {isLoggedIn, retrieveER, logout} from '../logic'
+import Logo from './FriendEscape.png'
+import ReactPlayer from 'react-player'
+import './ERDetail.sass'
 // import Feedback from './Feedback'
 
-export default ({ onGoToLanding, escaperoom}) => {
-    const {title, location, description, punctuation, theme, difficulty, duration, price, minplayers, maxplayers, img, web, video} = escaperoom
-    
+export default ({ escaperoomId, user, onGoToLanding, onHandleLogOut }) => {
+
+    const [escaperoom, setEscaperoom] = useState()
+
+    useEffect(() => {
+
+            (async() => {
+                try {
+                    const escaperoom = await retrieveER(escaperoomId)
+                    setEscaperoom(escaperoom)       
+                    
+                } catch (error) {
+                    console.error ( error.message)
+                }
+          })()
+
+      })
+
+    const { name } = user
+
+
+    // const { title, location, description, punctuation, theme, difficulty, duration, price, minplayers, maxplayers, img, web, video } = escaperoom
+
     function handleGoToLanding(event) {
         event.preventDefault()
         onGoToLanding()
     }
 
-    return <div>
-        <section className="escape_item">
+    function handleLogOut(event) {
+        event.preventDefault()
+        onHandleLogOut()
 
-                <section className="escaperoom_detail">
-                    <h3>{title}</h3>
-                    <h3>{location}</h3>
-                    <h4>{description}</h4>
-                    <h4>{punctuation}</h4>
-                    <h4>{theme}</h4>
-                    <h4>{difficulty}</h4>
-                    <h4>{duration}</h4>
-                    <h4>{price}</h4>
-                    <h4>{minplayers}</h4>
-                    <h4>{maxplayers}</h4>
-                    <img src={img} alt="escaperoom" className="escaperoom_img"/>
-                    <video width="320" height="240" controls>
-                    <a href={web}></a>
-                    <source src={video} type="video/mp4">
-                    </source>
-                    <source src={video} type="video/ogg">
-                    </source>
-                    </video>
-                    <button onClick = {handleGoToLanding}>Return landing</button>     
-                </section>
+    }
+
+
+
+    return <>
+        <div className="header">
+            <figure>
+                <img className='header__logo' src={Logo} alt="Logo" />
+            </figure>
+            <div className='header__username'>
+                <p>Welcome {name}</p>
+                <i className="fas fa-sign-out-alt" onClick={handleLogOut}></i>
+            </div>
+        </div>
+
+
+
+        <section className="detail">
+            <h3 className="detail__title" >{escaperoom && escaperoom.title}</h3>
+            <div className="detail__info">
+            <h3>Location: {escaperoom && escaperoom.location}</h3>
+            <h4>Description: {escaperoom && escaperoom.description}</h4>
+            <h4>Punctuation: {escaperoom && escaperoom.punctuation}</h4>
+            <h4>Theme: {escaperoom && escaperoom.theme}</h4>
+            <h4>Difficulty: {escaperoom && escaperoom.difficulty}</h4>
+            <h4>Duration: {escaperoom && escaperoom.duration}</h4>
+            <h4>Price: {escaperoom && escaperoom.price}</h4>
+            <h4>Min-players: {escaperoom && escaperoom.minplayers}</h4>
+            <h4>Max-players: {escaperoom && escaperoom.maxplayers}</h4>
+            </div>
+            <img className= "detail__img" width="420" height="315" src={escaperoom && escaperoom.img}/>
+           
+
+            <ReactPlayer width="100%"
+            height="auto" className="detail__video" url={escaperoom && escaperoom.video} controls playing />
+                <a href={escaperoom && escaperoom.web}>Reserva aquí</a>
+               
+            <button onClick={handleGoToLanding}>Return landing</button>
         </section>
-    </div>
+
+    </>
 }

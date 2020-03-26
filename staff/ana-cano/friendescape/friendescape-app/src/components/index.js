@@ -4,11 +4,13 @@ import Login from './Login'
 import Register from './Register'
 import Landing from './Landing'
 import Feedback from './Feedback'
-import ERDetail from './ERDetail'
 import Home from './Home'
 import Item from './Item'
+import Groups from './Groups'
+import ERDetail from './ERDetail'
 import Locations from './Locations'
-// import GroupsLanding from './GroupsLanding'
+import Themes from './Themes'
+import Group from './Group'
 
 
 export {
@@ -18,11 +20,11 @@ export {
     Register,
     Landing,
     Feedback,
-    ERDetail,
     Home,
     Item,
-    Locations
-
-    // GroupsLanding
-
+    Groups,
+    ERDetail,
+    Locations,
+    Themes,
+    Group
 }

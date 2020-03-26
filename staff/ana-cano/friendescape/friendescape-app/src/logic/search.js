@@ -35,5 +35,5 @@ export default (function(query){
         throw new Error('server error')
     })()
 
-    
+
 }).bind(context)

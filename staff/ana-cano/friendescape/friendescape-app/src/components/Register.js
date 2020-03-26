@@ -42,7 +42,6 @@ export default function ({ onSubmit, onGoToLogin, error, onMount }) {
         <form className="register__form" onSubmit={handleSubmit}>
        
         <div className="register__inputWrapper">
-            <i className="far fa-user-circle"></i>
             <input id="name-input" className="register__input" type="text" name="name" placeholder="Insert your name"/> Name: 
         </div>
 
@@ -62,12 +61,16 @@ export default function ({ onSubmit, onGoToLogin, error, onMount }) {
         <div className="register__inputWrapper">
             <input id="password-input" className="register__input" type="text" name="password" placeholder="Insert your password"/> Password: 
         </div>
-
+        <div className="register__buttons">
         <button type="submit" className="btn--main" >Register</button>
+        <br></br>
+        <br></br>
         <a href="" onClick={handleGoToLogin}>Login</a>  
+        </div>
             
         </form>
         {/* {error && <Feedback message={error} level="warn" />} */}
     </section>
+    <br></br>
     </>
 }

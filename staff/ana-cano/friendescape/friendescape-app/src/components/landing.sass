@@ -1,41 +1,36 @@
-@import url(https://fonts.googleapis.com/css?family=Montserrat)
-
-html 
-  box-sizing: border-box
-
-body 
-  padding: 10px
-  width: 100vw
-  height: 100vh
-  margin: 0
-  padding: 0
-  list-style: none
-  text-decoration: none
-  border: none
-  outline: none
-  background-color: #b5b5b5
-  font-family: "Monserrat", cursive
-  color: black
-  background-image: url('./background.jpg')
+body
+    padding: 10px
+    width: 100vw
+    height: 100vh
+    margin: 0
+    padding: 0
+    list-style: none
+    text-decoration: none
+    border: none
+    outline: none
+    font-family: "Monserrat", cursive
+    color: black
+    background-image: url('./lila.jpg')
+    background-size: cover
 
 
-
-.landing 
-    &__title 
+.landing
+    &__title
         font-size: 2rem
         text-shadow: 2px 2px 3px #eee
         text-align: center
         margin-top: 5rem
-    &__figure 
+    &__figure
         text-align: center
-    &__image 
+    &__image
         max-width: 100%
         height: auto
+    &__actions
+        text-align: center
 a
     box-sizing: border-box
-    box-shadow: 0 0 3pt 2pt #c3c3c3
+    box-shadow: 0 0.3rem 0 #006BFF, 0 0 8pt 4pt #B0B3DC
     font-family: "Montserrat", sans-serif
-    background: #577ff2
     color: white
     font-weight: 700
     text-transform: uppercase
@@ -45,19 +40,18 @@ a
     border-radius: 0.3rem
     padding: 0.7rem 2rem
     cursor: pointer
-    text-shadow: 3px 3px 3px #006bff
+    text-shadow: 3px 3px 3px #006BFF
     margin: 20px
-    
-
-.errorMessage 
+    text-decoration: none
+.errorMessage
     width: 90%
     padding: 15px
     position: relative
-    border-left: 8px solid #bababa
-    background: #ededed
-    color: #a1a1a1
+    border-left: 8px solid #BABABA
+    background: #EDEDED
+    color: #A1A1A1
     border-radius: 4px
-    display: flex;
+    display: flex
     justify-content: start
     align-items: center
     font-size: 16px
@@ -70,21 +64,18 @@ a
     animation-duration: 0.5s
     animation-fill-mode: both
     animation-delay: 0.4s
-    border-color: #ff4757
-    background: #ffe0e3
-    color: #ff4757
+    border-color: #FF4757
+    background: #FFE0E3
+    color: #FF4757
     margin: 0 auto
     max-width: 600px
-
-    &__icon 
+    &__icon
         margin-right: 10px
         height: 100%
         display: flex
         justify-content: center
         align-items: center
         font-size: 20px
-    &__content 
+    &__content
         width: 100%
         line-height: 1.5
-
-  

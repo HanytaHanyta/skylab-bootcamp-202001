@@ -1,6 +1,6 @@
 import React, { useEffect, useContext, useState} from 'react'
-import { Register, Login, Page, Landing, Home, Main} from '../components'
-import { registerUser, retrieveUser, login, isLoggedIn,search, escapeList } from '../logic'
+import { Register, Login, Page, Landing, Home, Themes, Locations, ERDetail, Group, Groups} from '../components'
+import { registerUser, retrieveUser, login, logout, isLoggedIn,search, escapeList, retrieveER, retrieveGroups} from '../logic'
 import { Context } from './ContextProvider'
 import { Route, withRouter, Redirect } from 'react-router-dom'
 
@@ -10,15 +10,16 @@ export default withRouter(function ({ history }) {
   const [ user, setUser] = useState([])
   const [ escapes , setEscapeList] = useState([])
   const [ query, setQuery] = useState([])
-  
+  const [detail, setDetail] = useState([])
+  const [group, setGroupList] = useState([])
+
+
 
   useEffect(() => {
     if (isLoggedIn()) {
       (async() => {
-
         const user = await retrieveUser()
         setUser(user)       
-
       })()
     } else {
       history.push('/login')
@@ -32,6 +33,7 @@ export default withRouter(function ({ history }) {
 
   }, [])
 
+  
   function handleGoToLogin() {
     history.push('/login')
   }
@@ -54,7 +56,6 @@ export default withRouter(function ({ history }) {
       setEscapeList(availableEscapes)
       
       history.push('/home')
-      //ojito que lo he cambiado
     } catch ({ message }) {
       setState({ ...state, error: message })
     }
@@ -68,7 +69,8 @@ export default withRouter(function ({ history }) {
 
     try {
       await registerUser(name, surname, email, telf, password)
-      setState({ page: 'login' })
+      debugger
+      history.push('/login')
     } catch ({ message }) {
       setState({ error: message })
     }
@@ -77,16 +79,6 @@ export default withRouter(function ({ history }) {
   function handleMountRegister(){
     setState({ page: 'register'})
   }
-
-  // async function handleSearch(){
-  //   try{
-    
-  //     await search(query)
-  //     setState({ page: `escaperooms/search/${query}`})
-  //   } catch ({ message }) {
-  //     setState({ error: message })
-  //   }
-  // }
 
   async function handleSearch(query){
     try {
@@ -97,54 +89,59 @@ export default withRouter(function ({ history }) {
     }
   }
 
-  async function handleJoinGroup(){
+  async function joinGroup(){
     try{
-
-      setState({ page: 'landing'})
-    } catch ({ message }) {
-      setState({ error: message })
-    }
+    const availableGroups = await retrieveGroups()
+    setGroupList(availableGroups)
+    
+    history.push('/groups')
+  } catch ({ message }) {
+    setState({ error: message })
   }
-
-    function handleLocations() {
-      history.push('/location')
+} 
+    
+  function handleLocations() {
+      history.push('/locations')
+      }
+    function handleTheme() {
+      history.push('/themes')
       }
 
-  //     setState({ page: 'locations'})
-  //   } catch ({ message }) {
-  //     setState({ error: message })
-  //   }
-  // }
 
-  }
 
-  // async function onGoToJoinGroups({
-  //   setState({ page: 'landing' })
-  // })
+    async function handleDetail(id){
+     
+        try {
+          const escaperoom = await retrieveER(id)
+          setDetail(escaperoom)
+    
+          history.push(`/escaperoom/${id}`)
+        } catch ({ message }) {
+          setState({ ...state, error: message })
+        }
+      }
+    //   }
 
+    function handleLogOut(){
+      logout()
+      history.push('/landing')
+
+    }
 
   return <div>
 
     <Page name={page}>
-      <Route exact path="/" render={() => <Redirect to="/landing" />} />
-      <Route path="/landing" render={() => <Landing onGoToRegister={handleGoToRegister} onGoToLogin={handleGoToLogin} onMount={handleMountLanding} />} /> 
-      <Route path="/login" render={() => <Login onSubmit={handleLogin} error={error} onGoToRegister={handleGoToRegister} onMount={handleMountLogin} />} />
-      <Route path="/register" render={() => <Register onSubmit={handleRegister} error={error} onGoToLogin={handleGoToLogin} onMount={handleMountRegister} />} />
-      <Route path='/home' render={() => <><Home user={user} availableEscape = {escapes} onGoToSearch={handleSearch}  onGoToJoinGroup={handleJoinGroup} onGoToLocations={handleLocations}/></>} />
-      <Route path='/location' render={() => <><Home user={user} availableEscape = {escapes} onGoToSearch={handleSearch}  onGoToJoinGroup={handleJoinGroup} onGoToLocations={handleLocations}/></>} />
-{/* 
-      onSubmit={handleSearch} */}
-      
-      
-      {/* <Route path="/main" render={()=> <Header onMount={handleMountHeader} />} />  */}
-      {/* <Route path="/" render={() => <h1>Hello, All</h1>} />  */}
-      {/* <Route path="/login" render={() => <h1>Hello, Login</h1>} />  */}
-      {/* <Route path="/home/:id" render={props => <h1>{props.match.params.id}</h1>} /> */}
-      {/* <Route path="/register" render={() => isLoggedIn() ? <Redirect to="/home" /> : <Register onSubmit={handleRegister} error={error} onGoToLogin={handleGoToLogin} onMount={handleMountRegister} />} />       */}
-      {/* <Route path="/home" render={() => isLoggedIn() ? <Home /> : <Redirect to="/login" />} />  */}
+      <Route exact path="/" render={() => isLoggedIn() ? <Redirect to ="/home" /> : <Redirect to ="landing" />} />
+      <Route path="/landing" render={() =>  isLoggedIn() ? <Redirect to="/home" /> : <Landing onGoToRegister={handleGoToRegister} onGoToLogin={handleGoToLogin} onMount={handleMountLanding} />} /> 
+      <Route path="/login" render={() => isLoggedIn()? <Redirect to="/home" /> : <Login onSubmit={handleLogin} error={error} onGoToRegister={handleGoToRegister} onMount={handleMountLogin} />} />
+      <Route path="/register" render={() => isLoggedIn() ? <Redirect to="/home" /> : <Register onSubmit={handleRegister} error={error} onGoToLogin={handleGoToLogin} onMount={handleMountRegister} />} />
+      <Route path='/home' render={() => isLoggedIn() ? <Home user={user} onHandleLogOut={handleLogOut} availableEscape = {escapes} onGoToSearch={handleSearch} onHandleLocations={handleLocations} onGoToDetail={handleDetail} onHandleItemClick={handleTheme} onGoToJoinGroups={joinGroup} /> : <Redirect to="/home" />} />
+      <Route path='/escaperoom/:id' render={props => isLoggedIn() ? <ERDetail user={user} escaperooom={detail} onHandleLogOut={handleLogOut} escaperoomId={props.match.params.id} onHandleItemClick={handleDetail} /> : <Redirect to ="landing" />} />
+      <Route path='/locations' render={() => isLoggedIn() ? <Locations/>: <Redirect to ="landing" />} />
+      <Route path='/themes' render={() => isLoggedIn() ? <Themes/>: <Redirect to ="landing" />} />
+      <Route path='/groups' render={() => isLoggedIn() ? <Groups/>: <Redirect to ="landing" />} />
+     
     </Page>
 
   </div>
 })
-
-

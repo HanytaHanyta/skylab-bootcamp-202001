@@ -29,10 +29,11 @@ export default function ({ onGoToRegister, onGoToLogin, error }) {
     <figure className="landing__figure">
         <img className='landing__image' src ={Logo} alt="Logo"/>
     </figure>
-
-    <button href="" onClick = {handleGoToLogin}>Login</button> 
-    <button href="" onClick = {handleGoToRegister}>Register</button> 
-
+    
+    <div className="landing__actions">
+    <a href="" onClick = {handleGoToLogin}>Login</a> 
+    <a href="" onClick = {handleGoToRegister}>Register</a> 
+    </div>
     </section>
     </>
 }
