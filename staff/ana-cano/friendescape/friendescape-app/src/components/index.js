@@ -11,6 +11,7 @@ import ERDetail from './ERDetail'
 import Locations from './Locations'
 import Themes from './Themes'
 import Group from './Group'
+import Map from './Map'
 
 
 export {
@@ -26,5 +27,6 @@ export {
     ERDetail,
     Locations,
     Themes,
-    Group
+    Group,
+    Map
 }

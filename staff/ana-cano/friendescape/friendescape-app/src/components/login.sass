@@ -1,65 +1,64 @@
-@import url(https://fonts.googleapis.com/css?family=Montserrat)
+.login
+  margin-bottom: 40px
+  &__title
+    font-size: 2rem
+    text-shadow: 2px 2px 3px #eee
+    text-align: center
 
-html 
-  box-sizing: border-box
+  &__figure
+    text-align: center
 
-body 
-  padding: 10px
-  width: 100vw
-  height: 100vh
-  margin: 0
-  padding: 0
-  list-style: none
-  text-decoration: none
-  border: none
-  outline: none
-  background-color: #b5b5b5
-  font-family: Kaushan Script
-  color: black
+  &__image
+    max-width: 100%
+    height: auto
 
-.login 
-    &__title 
-        font-size: 2rem
-        text-shadow: 2px 2px 3px #eee
-        text-align: center
-    &__figure 
-        text-align: center
-    &__image 
-        max-width: 100%
-        height: auto
-    &__form
-        text-align: center
-        margin: -6rem 0
-    &__button 
-        font-family: "Roboto", sans-serif
-        text-transform: uppercase
-        outline: 0
-        background: #4caf50
-        width: 100%
-        border: 0
-        padding: 15px
-        color: #ffffff
-        font-size: 14px
-        -webkit-transition: all 0.3 ease
-        transition: all 0.3 ease
-        cursor: pointer
-        max-width: 400px
+  &__form
+    text-align: center
+    border: 2px solid red
 
-.login__inputWrapper 
-    position: relative
-    margin-top: 50px
-    transform: translateX(50%)
-    left: -190px
+  &__button
+    font-family: "Roboto", sans-serif
+    text-transform: uppercase
+    outline: 0
+    background: #4caf50
+    width: 100%
+    border: 0
+    padding: 15px
+    color: #ffffff
+    font-size: 14px
+    -webkit-transition: all 0.3 ease
+    transition: all 0.3 ease
+    cursor: pointer
+    max-width: 400px
 
-input
+    &:hover,
+    &:active,
+    &:focus
+      background: #43a047
+
+// LOGIN INPUTS STYLES -----------------------------------
+div[class*="__inputWrapper"] 
+  position: relative
+  margin-top: 50px
+  transform: translateX(50%)
+  left: -190px
+
+
+  input[type="email"],
+  input[type="password"]
     display: inline-block
+    width: 380px
     height: 40px
     box-sizing: border-box
     outline: none
+    border: 1px solid lightgray
+    border-radius: 3px
+    padding: 10px 10px 10px 120px
+    transition: all 0.1s ease-out
     font-size: 0.8rem
     box-shadow: 0 0 3pt 2pt #c3c3c3
 
-    &__label 
+    & + label
         position: absolute
         top: 0
         left: 0
@@ -76,67 +75,3 @@ input
         font-weight: 600
         font-family: "Montserrat", sans-serif
         font-size: 0.8rem
-
-.btn--main 
-    background: #577ff2
-    color: white
-    font-weight: 700
-    text-transform: uppercase
-    font-size: 1.1rem
-    border: 0
-    letter-spacing: 0.1em
-    border-radius: 0.3rem
-    padding: 0.7rem 2rem
-    box-shadow: 0 0.3rem 0 #006bff
-    position: relative
-    bottom: 0
-    cursor: pointer
-    transition: all ease-out 0.1s
-    display: block
-    margin: 20px auto 0 auto
-    padding: 14px 50px
-    outline: none
-    text-shadow: 3px 3px 3px #006bff
-    &:active 
-        outline: none
-        bottom: -0.3rem
-        box-shadow: 0 0 0 #c02d3a
-
-.errorMessage 
-    width: 90%
-    padding: 15px
-    position: relative
-    border-left: 8px solid #bababa
-    background: #ededed
-    color: #a1a1a1
-    border-radius: 4px
-    display: flex;
-    justify-content: start
-    align-items: center
-    font-size: 16px
-    transition: 0.5s ease-in-out
-    visibility: visible
-    opacity: 1
-    height: auto
-    overflow: hidden
-    animation-name: showAlert
-    animation-duration: 0.5s
-    animation-fill-mode: both
-    animation-delay: 0.4s
-    border-color: #ff4757
-    background: #ffe0e3
-    color: #ff4757
-    margin: 0 auto
-    max-width: 600px
-
-    &__icon 
-        margin-right: 10px
-        height: 100%
-        display: flex
-        justify-content: center
-        align-items: center
-        font-size: 20px
-    &__content 
-    width: 100%
-    line-height: 1.5
-  

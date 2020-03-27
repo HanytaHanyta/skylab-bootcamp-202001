@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import './login.sass'
+
 import Logo from './FriendEscape.png'
 // import Feedback from './Feedback'
 
@@ -38,22 +39,22 @@ export default function ({ onSubmit, onGoToRegister, error, onMount }) {
             <img className='login__image' src ={Logo} alt="Logo"/>
         </figure>
 
-        <form className="login__form" onSubmit = {handleSubmit}>
+        <form action="login__form" onSubmit = {handleSubmit}>
             <div className="login__inputWrapper">
-                <i className="fas fa-envelope-open-text"></i>
-                <input className= "login__input" id="username-input" name="email" type= "email" placeholder="Insert your email"/> E-mail: <br></br><br></br>  
-            <br></br>
-                {/* {errors && <p>{}</p> } */}
-                <i className="fas fa-key"></i>
-                <input  className= "login__input" id="password-input" name="password" type="password" placeholder="Insert your password"/> Password: <br></br> <br></br> 
+                <input id="username-input" className="login__input" name="email" type= "email" placeholder="Insert your email"/>
+                <label for="username-input" className="login__label">E-mail:</label>
+
             </div>
-            <div className="login__buttons">
-            <button type="submit" className="btn--main" >Login</button>
-            <br></br><br></br>
-            <a href="" onClick = {handleGoToRegister}>Register</a>     
-            <br></br>
+            <div class="login__inputWrapper">
+                <input id="password-input" className="login__input" name="password" type="password" placeholder="Insert your password" />
+                <label for="password-input" className="login__label">Password</label>
             </div>
-        </form>
+
+            <button className="btn--main" type="submit">Login</button>
+
+            <button className="btn--main" onClick = {handleGoToRegister}>Register</button>
+
+          </form>
         {/* {error && <Feedback message={error} level="error"/>} */}
     </section>
     </>

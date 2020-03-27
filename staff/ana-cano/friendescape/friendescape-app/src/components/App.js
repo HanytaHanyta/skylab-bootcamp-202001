@@ -3,6 +3,7 @@ import { Register, Login, Page, Landing, Home, Themes, Locations, ERDetail, Grou
 import { registerUser, retrieveUser, login, logout, isLoggedIn,search, escapeList, retrieveER, retrieveGroups} from '../logic'
 import { Context } from './ContextProvider'
 import { Route, withRouter, Redirect } from 'react-router-dom'
+import './base.sass'
 
 export default withRouter(function ({ history }) {
   const [state, setState] = useContext(Context)
@@ -114,7 +115,8 @@ export default withRouter(function ({ history }) {
         try {
           const escaperoom = await retrieveER(id)
           setDetail(escaperoom)
-    
+          const user = await retrieveUser()
+          setUser(user)
           history.push(`/escaperoom/${id}`)
         } catch ({ message }) {
           setState({ ...state, error: message })
@@ -128,6 +130,14 @@ export default withRouter(function ({ history }) {
 
     }
 
+    async function goBack(){
+  //Me tendría que t
+      history.push('/home')
+    }
+
+   
+    
+
   return <div>
 
     <Page name={page}>
@@ -139,7 +149,7 @@ export default withRouter(function ({ history }) {
       <Route path='/escaperoom/:id' render={props => isLoggedIn() ? <ERDetail user={user} escaperooom={detail} onHandleLogOut={handleLogOut} escaperoomId={props.match.params.id} onHandleItemClick={handleDetail} /> : <Redirect to ="landing" />} />
       <Route path='/locations' render={() => isLoggedIn() ? <Locations/>: <Redirect to ="landing" />} />
       <Route path='/themes' render={() => isLoggedIn() ? <Themes/>: <Redirect to ="landing" />} />
-      <Route path='/groups' render={() => isLoggedIn() ? <Groups availableGroups={group}/>: <Redirect to ="landing" />} />
+      <Route path='/groups' render={() => isLoggedIn() ? <Groups availableGroups={group} onHandleGoBack={goBack}/>: <Redirect to ="landing" />} />
      
     </Page>
 

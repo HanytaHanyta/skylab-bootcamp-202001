@@ -4,11 +4,16 @@ import Logo from './FriendEscape.png'
 import Group from './Group'
 
 
-export default function ({ availableGroups, onHandleLogOut, onItemClick}) {
+export default function ({ availableGroups, onHandleLogOut, onHandleGoBack, onItemClick}) {
     
     function handleLogOut(event){
         event.preventDefault()
         onHandleLogOut()
+
+    }
+    function handleGoBack(event){
+        event.preventDefault()
+        onHandleGoBack()
 
     }
     
@@ -28,6 +33,7 @@ export default function ({ availableGroups, onHandleLogOut, onItemClick}) {
             <p>Escapes Room</p>
             <ul>
                 {availableGroups.map(group => <Group key={group._id} item={group} onClick={onItemClick} />)}
+                <i class="fas fa-chevron-left" onClick={handleGoBack}></i>
             </ul>
         </div>
 

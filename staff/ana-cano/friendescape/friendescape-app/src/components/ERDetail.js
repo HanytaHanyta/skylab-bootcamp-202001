@@ -73,8 +73,9 @@ export default ({ escaperoomId, user, onGoToLanding, onHandleLogOut }) => {
             <ReactPlayer width="100%"
             height="auto" className="detail__video" url={escaperoom && escaperoom.video} controls playing />
                 <a href={escaperoom && escaperoom.web}>Reserva aquí</a>
-               
-            <button onClick={handleGoToLanding}>Return landing</button>
+
+                               
+            <button >Return landing</button>
         </section>
 
     </>

@@ -3,15 +3,11 @@ import './item.sass'
 
 
 
-export default function ({ key, item, onHandleGoBack}) {
+export default function ({ key, item}) {
 
-    const {date, time, subevents, created, state} = item
+    const {date, time, subevents, escapeRoom} = item
 
-    function handleGoBack(event){
-        event.preventDefault()
-        onHandleGoBack()
-
-    }
+  
 
      return <>
 
@@ -20,9 +16,11 @@ export default function ({ key, item, onHandleGoBack}) {
             <h4>Date: {date}</h4>
             <h5>Time: {time}</h5>
             <h5>Subevents: {subevents}</h5>
-            <h5>Created: {created}</h5>
-            <h5>State : {state}</h5>
-            <i class="fas fa-chevron-left" onClick={handleGoBack}></i>
+            <h5>Title: {escapeRoom.title}</h5>
+            <h5>Min-Players: {escapeRoom.minplayers}</h5>
+            <h5>Max-Players: {escapeRoom.maxplayers}</h5>
+            {/* <h5>State : {state}</h5> */}
+            
             
         </li>
     </>

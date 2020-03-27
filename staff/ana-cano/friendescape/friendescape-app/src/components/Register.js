@@ -42,30 +42,34 @@ export default function ({ onSubmit, onGoToLogin, error, onMount }) {
         <form className="register__form" onSubmit={handleSubmit}>
        
         <div className="register__inputWrapper">
-            <input id="name-input" className="register__input" type="text" name="name" placeholder="Insert your name"/> Name: 
+            <input id="name-input" className="register__input" type="text" name="name" placeholder="Insert your name"/> 
+            <label for="name-input" className="register__label">Name:</label>
         </div>
 
         <div className="register__inputWrapper">
-            <input id="surname-input" className="register__input" type="text" name="surname" placeholder="Insert your surname"/> Surname: 
+            <input id="surname-input" className="register__input" type="text" name="surname" placeholder="Insert your surname"/> 
+            <label for="surname-input" className="register__label">Surname:</label>
         </div>
 
         <div className="register__inputWrapper">
-            <input id="email-input" className="register__input" type="text" name="email" placeholder="Insert your email"/> Email: 
-            
+            <input id="email-input" className="register__input" type="email" name="email" placeholder="Insert your email"/> 
+            <label for="email-input" className="register__label"> Email:</label>
         </div>
 
         <div className="register__inputWrapper">
-            <input id="telf-input" className="register__input" type="text" name="telf" placeholder="Insert your tele"/> Telef:
+            <input id="telf-input" className="register__input" type="text" name="telf" placeholder="Insert your tele"/> 
+            <label for="telf-input" className="register__label">Telf:</label>
         </div>
 
         <div className="register__inputWrapper">
-            <input id="password-input" className="register__input" type="text" name="password" placeholder="Insert your password"/> Password: 
+            <input id="password-input" className="register__input" type="password" name="password" placeholder="Insert your password"/>
+            <label for="password-input" className="register__label"> Password:</label> 
         </div>
         <div className="register__buttons">
         <button type="submit" className="btn--main" >Register</button>
         <br></br>
         <br></br>
-        <a href="" onClick={handleGoToLogin}>Login</a>  
+        <a href="" className="btn--main" onClick={handleGoToLogin}>Login</a>  
         </div>
             
         </form>
