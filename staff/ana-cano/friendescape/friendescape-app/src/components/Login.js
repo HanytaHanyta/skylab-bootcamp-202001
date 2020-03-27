@@ -1,36 +1,35 @@
-import React, { useState } from 'react'
+import React, { useEffect } from 'react'
 import './login.sass'
 import Logo from './FriendEscape.png'
-import 'font-awesome/css/font-awesome.min.css'
+// import Feedback from './Feedback'
+
+
+
 
 
 export default function ({ onSubmit, onGoToRegister, error, onMount }) {
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-    const [errors, setErrors] = useState(null)
-
+    useEffect(() => {
+        onMount()
+    }, [])
 
     function handleSubmit(event) {
         event.preventDefault()
-        // if (email === '') {
-        //     setErrors({error: 'email can\'t be empty'})
-        // }
-        // if (password === '') {
-        //     setErrors({error: 'password can\'t be empty'})
-        // }
-
+        
+        const { target: {
+            email: { value: email },
+            password: { value: password }
+        } } = event
         onSubmit(email, password)
     }
 
     function handleGoToRegister(event) {
         event.preventDefault()
-
         onGoToRegister()
     }
 
+
     return <>
     <section className="login">
-
         <header className="login__header">
             <h1 className="login__title">Welcome again</h1>
         </header>
@@ -41,22 +40,48 @@ export default function ({ onSubmit, onGoToRegister, error, onMount }) {
 
         <form className="login__form" onSubmit = {handleSubmit}>
             <div className="login__inputWrapper">
-            <i class="fas fa-envelope-open-text"></i>
-            <input id="username-input" className="login__input" onChange={e => setEmail(e.target.value)} type="text" name="email" placeholder="Insert your email"/>
-                <label for="username-input" className="login__label">E-mail: </label>
+                <i className="fas fa-envelope-open-text"></i>
+                <input className= "login__input" id="username-input" name="email" type= "email" placeholder="Insert your email"/> E-mail: <br></br><br></br>  
+            <br></br>
+                {/* {errors && <p>{}</p> } */}
+                <i className="fas fa-key"></i>
+                <input  className= "login__input" id="password-input" name="password" type="password" placeholder="Insert your password"/> Password: <br></br> <br></br> 
             </div>
-                {errors && <p>{}</p> }
-            <div className="login__inputWrapper">
-            <i class="fas fa-key"></i>
-                <input id="password-input" className="login__input" onChange={e => setPassword(e.target.value)} type="password" placeholder="Insert your password" />
-                <label for="password-input" class="login__label">Password</label>
-            </div>
-                
-            <button type="button" className="btn--main" >Login</button>
+            <div className="login__buttons">
+            <button type="submit" className="btn--main" >Login</button>
+            <br></br><br></br>
             <a href="" onClick = {handleGoToRegister}>Register</a>     
-       
+            <br></br>
+            </div>
         </form>
-
+        {/* {error && <Feedback message={error} level="error"/>} */}
     </section>
     </>
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

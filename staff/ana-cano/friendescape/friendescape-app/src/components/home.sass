@@ -1,0 +1,96 @@
+.header 
+    display: flex
+    flex-direction: row
+    justify-content: flex-end
+    background: url(lila.jpg) no-repeat center top
+    &__username
+        justify-content: right
+        text-align: end
+        align-self: center
+        margin-right: 11px
+    &__logo 
+        height: 95px
+        margin-left: -11.5rem
+        margin-top: 0.5rem
+        width: auto
+    & > input
+        width: 17rem
+        margin-right: -7rem
+
+.search
+    display: flex
+    flex-direction: row
+    justify-content: space-around
+    align-items: center
+    height: 10%
+    width: 100%
+    background-color: thistle
+    &__main
+        list-style: none
+        border-bottom: 2px solid rgb(90, 13, 161)
+
+.burger
+    margin-left: -7rem
+   
+.textMenu
+    margin: 0.2em
+    padding: 0.25em 0.25em 0.25em 0.25em
+    text-decoration: none
+    font-size: 1.5em
+    color: #d3d1d1
+    display: block
+    transition: 0.2s
+    cursor: pointer
+.textMenu a:hover
+    color: #f1f1f1
+    
+.sidemenu
+    height: 30vh
+    width: 63%
+    position: absolute
+    left: -999px
+    background-color: #4e4b4b
+    transition: ease 1s
+    background-color: steelblue;
+.active
+    left: 0
+
+.menu
+    list-style-type: none
+
+
+.main
+    display: flex
+    flex-direction: column
+    &__btn
+        box-sizing: border-box
+        box-shadow: 0 0.3rem 0 #006BFF, 0 0 8pt 4pt #B0B3DC
+        font-family: "Montserrat", sans-serif
+        color: white
+        font-weight: 700
+        text-transform: uppercase
+        font-size: 1.1rem
+        border: 0
+        letter-spacing: 0.1em
+        border-radius: 0.3rem
+        padding: 0.7rem 2rem
+        cursor: pointer
+        text-shadow: 3px 3px 3px #006BFF
+        margin: 20px
+        text-decoration: none
+.escapesroom
+    display: flex
+    flex-direction: column
+.search
+    display:none
+
+.query
+    list-style-type: none
+
+
+
+
+
+
+
+

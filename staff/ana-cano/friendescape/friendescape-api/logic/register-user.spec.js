@@ -25,7 +25,7 @@ describe('registerUser', () => {
         email = `email-${random()}@mail.com`
         telf = `telf-${random()}`
         password = `password-${random()}`
-    
+
         
     })
     it('should succeed on correct user data', () =>{

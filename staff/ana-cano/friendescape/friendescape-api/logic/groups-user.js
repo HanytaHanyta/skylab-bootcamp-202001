@@ -2,7 +2,6 @@ const { validate } = require('friendescape-utils')
 const { models: { Group, User} } = require('friendescape-data')
 const { NotFoundError } = require('friendescape-errors')
 module.exports = (userId) => {
-    debugger
 
     validate.string(userId, 'userId')
     return (async()=> {
