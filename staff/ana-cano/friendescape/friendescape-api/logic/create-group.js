@@ -3,11 +3,11 @@ const { models: { Group, User}, } = require('friendescape-data')
 const { NotFoundError } = require('friendescape-errors')
 
 module.exports = (escaperoomId, userId, date, time, state ) => {
-    // validate.string(escaperoomId, 'escaperoomId')
-    // validate.string(userId, 'userId')
-    // validate.string(date, 'date')
-    // validate.string(time, 'time')
-    // validate.string(state, 'state')
+    validate.string(escaperoomId, 'escaperoomId')
+    validate.string(userId, 'userId')
+    validate.type(date, 'date', Date)
+    validate.string(time, 'time')
+    validate.string(state, 'state')
     
     return ( async() =>{ 
 

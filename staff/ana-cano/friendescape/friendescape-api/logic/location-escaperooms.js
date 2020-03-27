@@ -8,6 +8,6 @@ module.exports = query => {
 
     return (async()=> {
     const escapeRooms = await Escaperoom.find({"location": { "$regex":query, "$options":"i"}})
-    return await escapeRooms
+    return escapeRooms
     })()
 }
