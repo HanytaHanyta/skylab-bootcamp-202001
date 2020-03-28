@@ -1,11 +1,11 @@
 import React from 'react'
-import './home.sass'
-import Logo from './FriendEscape.png'
+import '../sass/components/home.sass'
+import Logo from '../images/FriendEscape.png'
 import Group from './Group'
 
 
 export default function ({ availableGroups, onHandleLogOut, onHandleGoBack, onItemClick}) {
-    
+
     function handleLogOut(event){
         event.preventDefault()
         onHandleLogOut()
@@ -16,7 +16,7 @@ export default function ({ availableGroups, onHandleLogOut, onHandleGoBack, onIt
         onHandleGoBack()
 
     }
-    
+
     return <>
     {/* Header */}
         <div className="header">

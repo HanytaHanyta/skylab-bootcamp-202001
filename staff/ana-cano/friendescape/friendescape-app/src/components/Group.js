@@ -1,5 +1,5 @@
 import React from 'react'
-import './item.sass'
+import '../sass/components/item.sass'
 
 
 
@@ -7,7 +7,7 @@ export default function ({ key, item}) {
 
     const {date, time, subevents, escapeRoom} = item
 
-  
+
 
      return <>
 
@@ -20,9 +20,8 @@ export default function ({ key, item}) {
             <h5>Min-Players: {escapeRoom.minplayers}</h5>
             <h5>Max-Players: {escapeRoom.maxplayers}</h5>
             {/* <h5>State : {state}</h5> */}
-            
-            
+
+
         </li>
     </>
 }
-

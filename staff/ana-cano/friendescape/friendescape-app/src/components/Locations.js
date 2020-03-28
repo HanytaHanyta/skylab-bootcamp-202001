@@ -24,7 +24,7 @@
 //       </Map>
 //   </>
 // }
-import Logo from './FriendEscape.png'
+import Logo from '../images/FriendEscape.png'
 import React from 'react'
 import Map from './Map.js'
 export default function (user) {
@@ -38,13 +38,13 @@ export default function (user) {
     <i className="fas fa-sign-out-alt"npm ></i>
     </div>
     </div>
-    
+
       <div className="container-contact">
          <div className="container-contact__location">
             <div className="location">
                <i className="fa fa-map-marker mapMarker"></i>
                <h4>Nuestra dirección</h4>
-            
+
             </div>
          </div>
          <div className="container-contact__email">

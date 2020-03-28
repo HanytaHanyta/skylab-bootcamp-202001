@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
-import './register.sass'
+import '../sass/components/register.sass'
 // import Feedback from './Feedback'
-import Logo from './FriendEscape.png'
+import Logo from '../images/FriendEscape.png'
 
 export default function ({ onSubmit, onGoToLogin, error, onMount }) {
     useEffect(() => {
@@ -10,7 +10,7 @@ export default function ({ onSubmit, onGoToLogin, error, onMount }) {
 
     function handleSubmit(event) {
         event.preventDefault()
-        
+
         const {target: {
             name: {value: name},
             surname: {value: surname},
@@ -18,7 +18,7 @@ export default function ({ onSubmit, onGoToLogin, error, onMount }) {
             telf: {value: telf},
             password: {value: password}
         }} = event
-       
+
         onSubmit(name, surname, email, telf, password)
     }
 
@@ -38,40 +38,40 @@ export default function ({ onSubmit, onGoToLogin, error, onMount }) {
         <figure className="register__figure">
         <img className='register__image' src ={Logo} alt="Logo"/>
         </figure>
-        
+
         <form className="register__form" onSubmit={handleSubmit}>
-       
+
         <div className="register__inputWrapper">
-            <input id="name-input" className="register__input" type="text" name="name" placeholder="Insert your name"/> 
+            <input id="name-input" className="register__input" type="text" name="name" placeholder="Insert your name"/>
             <label for="name-input" className="register__label">Name:</label>
         </div>
 
         <div className="register__inputWrapper">
-            <input id="surname-input" className="register__input" type="text" name="surname" placeholder="Insert your surname"/> 
+            <input id="surname-input" className="register__input" type="text" name="surname" placeholder="Insert your surname"/>
             <label for="surname-input" className="register__label">Surname:</label>
         </div>
 
         <div className="register__inputWrapper">
-            <input id="email-input" className="register__input" type="email" name="email" placeholder="Insert your email"/> 
+            <input id="email-input" className="register__input" type="email" name="email" placeholder="Insert your email"/>
             <label for="email-input" className="register__label"> Email:</label>
         </div>
 
         <div className="register__inputWrapper">
-            <input id="telf-input" className="register__input" type="text" name="telf" placeholder="Insert your tele"/> 
+            <input id="telf-input" className="register__input" type="text" name="telf" placeholder="Insert your tele"/>
             <label for="telf-input" className="register__label">Telf:</label>
         </div>
 
         <div className="register__inputWrapper">
             <input id="password-input" className="register__input" type="password" name="password" placeholder="Insert your password"/>
-            <label for="password-input" className="register__label"> Password:</label> 
+            <label for="password-input" className="register__label"> Password:</label>
         </div>
         <div className="register__buttons">
         <button type="submit" className="btn--main" >Register</button>
         <br></br>
         <br></br>
-        <a href="" className="btn--main" onClick={handleGoToLogin}>Login</a>  
+        <a href="" className="btn--main" onClick={handleGoToLogin}>Login</a>
         </div>
-            
+
         </form>
         {/* {error && <Feedback message={error} level="warn" />} */}
     </section>

@@ -1,6 +1,6 @@
 import React from 'react'
-import './landing.sass'
-import Logo from './FriendEscape.png'
+import '../sass/components/landing.sass'
+import Logo from '../images/FriendEscape.png'
 
 
 
@@ -29,10 +29,11 @@ export default function ({ onGoToRegister, onGoToLogin, error }) {
     <figure className="landing__figure">
         <img className='landing__image' src ={Logo} alt="Logo"/>
     </figure>
-    
+
     <div className="landing__actions">
-    <a href="" onClick = {handleGoToLogin}>Login</a> 
-    <a href="" onClick = {handleGoToRegister}>Register</a> 
+    {/* ADD class btn--main */}
+    <a class="btn--main" href="" onClick = {handleGoToLogin}>Login</a>
+    <a class="btn--main" href="" onClick = {handleGoToRegister}>Register</a>
     </div>
     </section>
     </>

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
-import './login.sass'
+import '../sass/components/login.sass'
 
-import Logo from './FriendEscape.png'
+import Logo from '../images/FriendEscape.png'
 // import Feedback from './Feedback'
 
 
@@ -15,7 +15,7 @@ export default function ({ onSubmit, onGoToRegister, error, onMount }) {
 
     function handleSubmit(event) {
         event.preventDefault()
-        
+
         const { target: {
             email: { value: email },
             password: { value: password }
@@ -60,29 +60,3 @@ export default function ({ onSubmit, onGoToRegister, error, onMount }) {
     </>
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

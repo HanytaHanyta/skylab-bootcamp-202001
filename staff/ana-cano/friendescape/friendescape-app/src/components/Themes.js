@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react'
-import './home.sass'
-import Logo from './FriendEscape.png'
+import '../sass/components/home.sass'
+import Logo from '../images/FriendEscape.png'
 import Item from './Item'
-import Group from './group.jpg'
+import Group from '../images/group.jpg'
 
 
 export default function ({user, onHandleLocations, onHandleLogOut, availableEscape, onGoToSearch, onGoToJoinGroups, onGoToCreateAGroup, onGoToDetail, onHandleTheme}) {
     const {name} = user
     const [menu, setMenu] = useState(false)
-    
+
     function handleOpenNav (event) {
         event.preventDefault()
        menu ? setMenu(false): setMenu(true)
@@ -52,7 +52,7 @@ export default function ({user, onHandleLocations, onHandleLogOut, availableEsca
     }
 
 
-    
+
     return <>
     {/* Header */}
    <div className="header">

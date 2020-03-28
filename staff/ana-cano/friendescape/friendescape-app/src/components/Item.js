@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import './item.sass'
+import '../sass/components/item.sass'
 
 
 
@@ -23,7 +23,7 @@ export default function ({ item, onGoToDetail}) {
             <h5>Difficulty: {difficulty}</h5>
             <img src={img} />
             <h5>Punctuation: {punctuation}</h5>
-            
+
         </li>
     </>
 }

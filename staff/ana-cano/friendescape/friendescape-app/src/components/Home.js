@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import './home.sass'
-import Logo from './FriendEscape.png'
+import '../sass/components/home.sass'
+import Logo from '../images/FriendEscape.png'
 import Item from './Item'
 
 
@@ -8,7 +8,7 @@ import Item from './Item'
 export default function ({user, onHandleLocations, onHandleLogOut, availableEscape, onGoToSearch, onGoToJoinGroups, onGoToDetail, onHandleTheme}) {
     const {name} = user
     const [menu, setMenu] = useState(false)
-    
+
     function handleOpenNav (event) {
         event.preventDefault()
        menu ? setMenu(false): setMenu(true)
@@ -50,10 +50,10 @@ export default function ({user, onHandleLocations, onHandleLogOut, availableEsca
         event.preventDefault()
         onHandleTheme()
     }
-   
 
 
-    
+
+
     return <>
     {/* Header */}
    <div className="header">
@@ -70,10 +70,10 @@ export default function ({user, onHandleLocations, onHandleLogOut, availableEsca
     <div className="search">
     <section>
     <nav className='search__main'>
-        
+
         <form className="search__form" onSubmit={handleGoToSearch}>
         <a className="burger fas fa-bars" onClick={handleOpenNav}></a>
-            <input type="text" name="escroom" placeholder="Search your escape room" onChange={handleGoToChangeSearch}/> 
+            <input type="text" name="escroom" placeholder="Search your escape room" onChange={handleGoToChangeSearch}/>
         </form>
         <div className={menu ? "sidemenu active" : "sidemenu"}>
             <ul className="menu">
@@ -82,7 +82,7 @@ export default function ({user, onHandleLocations, onHandleLogOut, availableEsca
             <li><a className="textMenu" onClick={handleTheme}>Theme</a></li>
             </ul>
         </div>
-    </nav>  
+    </nav>
     </section>
     </div>
 
@@ -91,11 +91,11 @@ export default function ({user, onHandleLocations, onHandleLogOut, availableEsca
 <section className='main__groups'>
         <span> Do you want to live one adventure but you don't know who will be as brave as you? <br/>
         Join one of our groups or create a new one and... Show must go on!!</span><br/>
-        
-        <a href="" onClick = {handleGoToJoinGroups} className="main__btn">Join a group</a>  
+
+        <a href="" onClick = {handleGoToJoinGroups} className="main__btn">Join a group</a>
         <br></br>
         <a onClick={handleGoToCreateAGroup} className="main__btn"> Create a Group </a>
-        
+
 </section>
 
 

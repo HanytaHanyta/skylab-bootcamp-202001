@@ -3,7 +3,7 @@ import { Register, Login, Page, Landing, Home, Themes, Locations, ERDetail, Grou
 import { registerUser, retrieveUser, login, logout, isLoggedIn,search, escapeList, retrieveER, retrieveGroups} from '../logic'
 import { Context } from './ContextProvider'
 import { Route, withRouter, Redirect } from 'react-router-dom'
-import './base.sass'
+import '../sass/index.sass'
 
 export default withRouter(function ({ history }) {
   const [state, setState] = useContext(Context)
@@ -20,7 +20,7 @@ export default withRouter(function ({ history }) {
     if (isLoggedIn()) {
       (async() => {
         const user = await retrieveUser()
-        setUser(user)       
+        setUser(user)
       })()
     } else {
       history.push('/login')
@@ -34,7 +34,7 @@ export default withRouter(function ({ history }) {
 
   }, [])
 
-  
+
   function handleGoToLogin() {
     history.push('/login')
   }
@@ -55,7 +55,7 @@ export default withRouter(function ({ history }) {
 
       const availableEscapes = await escapeList()
       setEscapeList(availableEscapes)
-      
+
       history.push('/home')
     } catch ({ message }) {
       setState({ ...state, error: message })
@@ -65,7 +65,7 @@ export default withRouter(function ({ history }) {
   function handleGoToRegister() {
     history.push('/register')
   }
-  
+
   async function handleRegister(name, surname, email, telf, password) {
 
     try {
@@ -94,13 +94,13 @@ export default withRouter(function ({ history }) {
     try{
     const availableGroups = await retrieveGroups()
     setGroupList(availableGroups)
-    
+
     history.push('/groups')
   } catch ({ message }) {
     setState({ error: message })
   }
-} 
-    
+}
+
   function handleLocations() {
       history.push('/locations')
       }
@@ -111,7 +111,7 @@ export default withRouter(function ({ history }) {
 
 
     async function handleDetail(id){
-     
+
         try {
           const escaperoom = await retrieveER(id)
           setDetail(escaperoom)
@@ -135,14 +135,14 @@ export default withRouter(function ({ history }) {
       history.push('/home')
     }
 
-   
-    
+
+
 
   return <div>
 
     <Page name={page}>
       <Route exact path="/" render={() => isLoggedIn() ? <Redirect to ="/home" /> : <Redirect to ="landing" />} />
-      <Route path="/landing" render={() =>  isLoggedIn() ? <Redirect to="/home" /> : <Landing onGoToRegister={handleGoToRegister} onGoToLogin={handleGoToLogin} onMount={handleMountLanding} />} /> 
+      <Route path="/landing" render={() =>  isLoggedIn() ? <Redirect to="/home" /> : <Landing onGoToRegister={handleGoToRegister} onGoToLogin={handleGoToLogin} onMount={handleMountLanding} />} />
       <Route path="/login" render={() => isLoggedIn()? <Redirect to="/home" /> : <Login onSubmit={handleLogin} error={error} onGoToRegister={handleGoToRegister} onMount={handleMountLogin} />} />
       <Route path="/register" render={() => isLoggedIn() ? <Redirect to="/home" /> : <Register onSubmit={handleRegister} error={error} onGoToLogin={handleGoToLogin} onMount={handleMountRegister} />} />
       <Route path='/home' render={() => isLoggedIn() ? <Home user={user} onHandleLogOut={handleLogOut} availableEscape = {escapes} onGoToSearch={handleSearch} onHandleLocations={handleLocations} onGoToDetail={handleDetail} onHandleItemClick={handleTheme} onGoToJoinGroups={joinGroup} /> : <Redirect to="/home" />} />
@@ -150,7 +150,7 @@ export default withRouter(function ({ history }) {
       <Route path='/locations' render={() => isLoggedIn() ? <Locations/>: <Redirect to ="landing" />} />
       <Route path='/themes' render={() => isLoggedIn() ? <Themes/>: <Redirect to ="landing" />} />
       <Route path='/groups' render={() => isLoggedIn() ? <Groups availableGroups={group} onHandleGoBack={goBack}/>: <Redirect to ="landing" />} />
-     
+
     </Page>
 
   </div>

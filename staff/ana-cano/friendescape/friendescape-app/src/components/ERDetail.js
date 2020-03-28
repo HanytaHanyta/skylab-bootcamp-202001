@@ -1,8 +1,8 @@
 import React, { useEffect, useState} from 'react'
 import {isLoggedIn, retrieveER, logout} from '../logic'
-import Logo from './FriendEscape.png'
+import Logo from '../images/FriendEscape.png'
 import ReactPlayer from 'react-player'
-import './ERDetail.sass'
+import '../sass/components/ERDetail.sass'
 // import Feedback from './Feedback'
 
 export default ({ escaperoomId, user, onGoToLanding, onHandleLogOut }) => {
@@ -14,8 +14,8 @@ export default ({ escaperoomId, user, onGoToLanding, onHandleLogOut }) => {
             (async() => {
                 try {
                     const escaperoom = await retrieveER(escaperoomId)
-                    setEscaperoom(escaperoom)       
-                    
+                    setEscaperoom(escaperoom)
+
                 } catch (error) {
                     console.error ( error.message)
                 }
@@ -68,13 +68,13 @@ export default ({ escaperoomId, user, onGoToLanding, onHandleLogOut }) => {
             <h4>Max-players: {escaperoom && escaperoom.maxplayers}</h4>
             </div>
             <img className= "detail__img" width="420" height="315" src={escaperoom && escaperoom.img}/>
-           
+
 
             <ReactPlayer width="100%"
             height="auto" className="detail__video" url={escaperoom && escaperoom.video} controls playing />
                 <a href={escaperoom && escaperoom.web}>Reserva aquí</a>
 
-                               
+
             <button >Return landing</button>
         </section>
 
