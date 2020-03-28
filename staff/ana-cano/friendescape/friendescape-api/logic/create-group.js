@@ -17,6 +17,8 @@ module.exports = (escaperoomId, userId, date, time, state ) => {
 
     const user = await User.findById(userId)
 
+    if (!user) throw new NotFoundError(`user with ${userId} does not exist`)
+
     user.pubevents.push(newGroup._id.toString())
 
     newGroup.id = newGroup._id.toString()

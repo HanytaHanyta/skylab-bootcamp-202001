@@ -7,7 +7,7 @@ module.exports =  (query) => {
     validate.string(query, 'query')
 
     return Escaperoom.find({ title: { $regex: query, $options: "i" } } )
-        .then(scape => {
+        .then(scape => {debugger
             if (!scape) throw new NotAllowedError(`scape with email ${email} already exists`)
 
             return scape

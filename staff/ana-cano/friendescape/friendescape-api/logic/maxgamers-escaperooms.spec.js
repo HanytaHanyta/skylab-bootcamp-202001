@@ -7,7 +7,7 @@ const { floor, random } = Math
 const maxgamers = require('./maxgamers-escaperooms')
 
 
-describe.only('maxgamers', () => {
+describe('maxgamers', () => {
     before(() =>
         mongoose.connect(TEST_MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true })
             .then(() => Promise.all([User.deleteMany(), Escaperoom.deleteMany()]))

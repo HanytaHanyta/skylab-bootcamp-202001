@@ -2,6 +2,7 @@ require('dotenv').config()
 
 const { env: { TEST_MONGODB_URL } } = process
 const { mongoose, models: { User, Group, Escaperoom} } = require('friendescape-data')
+const { NotFoundError } = require('friendescape-errors')
 const { expect } = require('chai')
 const { random } = Math
 const deleteGroup = require('./delete-group')
@@ -13,7 +14,7 @@ describe('createGroup', () => {
             .then(() => User.deleteMany())
     )
     let name, surname, email, telf, password, pubevents, foults, trusty
-    let escaperoomId, userId, date, time, state
+    let date, time, state
     let title, location, description, punctuation, theme, difficulty, duration, price, minplayers, maxplayers, img, web, video
     
     
@@ -58,6 +59,7 @@ describe('createGroup', () => {
 
             const user = await User.create({name, surname, email, telf, password} )
 
+
             const group = await Group.create({date, time, state, _escaperoomId} )
 
             groupId = group.id.toString()
@@ -67,10 +69,49 @@ describe('createGroup', () => {
         })
 
         it('should succeed on correct remove group', async () => {
-            const deleted = await deleteGroup(groupId)
+            const deleted = await deleteGroup(groupId, _id)
             expect(deleted.deletedCount).to.be.greaterThan(0)
   
             })
+
+    })
+
+    describe('when user does not exist', () => {
+       
+        let _id, _escaperoomId, groupId
+
+        beforeEach ( async () => { 
+
+            const escapeRoom = await Escaperoom.create({title, location, description, punctuation, theme, difficulty, duration, price, minplayers, maxplayers, img, web, video})
+            
+            _escaperoomId = escapeRoom.id
+
+            const user = await User.create({name, surname, email, telf, password} )
+
+
+            const group = await Group.create({date, time, state, _escaperoomId} )
+
+            groupId = group.id.toString()
+
+            _id = user.id
+        
+        })
+
+        it('should fail on wrong user id', async () => {
+
+            const wrongId = 'juhygt567hyg'
+    
+            try {
+                await deleteGroup(groupId, wrongId)
+
+                throw Error('should not reach this point')
+    
+            } catch (error) {
+                expect(error).to.exist
+                expect(error).to.be.an.instanceOf(NotFoundError)
+                expect(error.message).to.equal(`user with ${wrongId} does not exist`)
+            }
+        })
 
     })
 
