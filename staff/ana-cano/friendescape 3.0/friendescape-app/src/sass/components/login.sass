@@ -1,0 +1,74 @@
+.login
+  min-height: 100vh
+  margin: 0
+  padding: 40px 0 0 0
+  background: url(/static/media/lila.0be7e164.jpg) no-repeat center center fixed
+  background-size: cover
+  border: 1px solid transparent
+  &__title
+    font-size: 2rem
+    text-shadow: 2px 7px 4px #2f2f2f
+    color: #ffe0e3
+    text-align: center
+    margin-top: 2rem
+  &__figure
+    text-align: center
+  &__image
+    max-width: 340px
+    min-width: 200px
+    height: auto
+  &__form
+    text-align: center
+  .btn--main:first-child
+      margin: 40px auto 0 auto
+  .btn--main:last-child
+      margin: 20px auto 0 auto
+  .errorMessage
+    margin: 0 auto 44px auto
+
+  &__inputWrapper
+    position: relative
+    display: flex
+    justify-content: center
+    margin-top: 20px
+    p
+      position: relative
+      margin: 0
+    input[type="email"],
+    input[type="password"],
+    input[type="text"],
+      display: inline-block
+      width: 380px
+      height: 40px
+      box-sizing: border-box
+      outline: none
+      border: 1px solid lightgray
+      border-radius: 3px
+      padding: 10px 10px 10px 130px
+      transition: all 0.1s ease-out
+      font-size: 1rem
+      box-shadow: 0 0 3pt 2pt #dfa2ea6e
+      font-family: Arial, Helvetica, sans-serif
+      color: #6381f2
+      & + label,
+      & + label
+        position: absolute
+        top: 0
+        left: 0
+        bottom: 0
+        height: 40px
+        line-height: 40px
+        color: white
+        border-radius: 3px 0 0 3px
+        padding: 0 20px
+        background: #d183ee
+        font-weight: 600
+        font-family: "Montserrat", sans-serif
+        font-size: 0.8rem
+        font-weight: 600
+        min-width: 118px;
+
+  input[type="email"]::placeholder,
+  input[type="password"]::placeholder,
+  input[type="text"]::placeholder
+    color: #d5dbf1
