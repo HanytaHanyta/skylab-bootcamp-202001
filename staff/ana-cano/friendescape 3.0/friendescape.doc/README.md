@@ -1,5 +1,5 @@
 ## FRIENDESCAPE
-![GIF](https://media.giphy.com/media/cEYFeDOOQ0cHqIgIEOA/source.gif)
+![GIF](https://gph.is/1jL2MVz)
 
 
 <p>FriendEscape is a application where you will have the chance to find information about escapes rooms in Spain. You will find information about price, groups, duration, different themes,... You also will have the chance to create new groups in order to be able to join one escape room, join one of the existing groups, leave an existing group or delete one.
