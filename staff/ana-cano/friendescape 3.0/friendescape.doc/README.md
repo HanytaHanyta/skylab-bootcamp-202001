@@ -45,6 +45,6 @@ https://trello.com/b/9w2c436o/friendescape
 
 ## TODO
 
-Add comments of the differents players 
-Send a message the day of the appointment to the users
-Add a calendar in the profile's user to see all the groups were he is subscribed
+* Add comments of the differents players 
+* Send a message the day of the appointment to the users
+* Add a calendar in the profile's user to see all the groups were he is subscribed
